@@ -1,4 +1,4 @@
-the base template was of this blog was based on <a href="https://manuelernestog.github.io/">manuel ernestog</a>
+this template was based on the <a href="https://manuelernestog.github.io/">manuel ernestog</a> blog
 
 ## Project Structure
 
