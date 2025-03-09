@@ -1,7 +1,7 @@
 ---
 title: "Rebuilding produts - Blue River ML stack"
 description: "in this article we will try to rebuild Blue river machine learning stack based on the info they share online."
-pubDate: "Sep 10 2022"
+pubDate: "March 09 2025"
 heroImage: "/bllue_river_stack.webp"
 tags: ["ML", "devOps"]
 ---

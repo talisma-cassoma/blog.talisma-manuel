@@ -1,7 +1,7 @@
 ---
 title: "Integrated finance control system"
 description: "architecting a integrated system to save daily expenses anywhere offline or online"
-pubDate: "Sep 12 2022"
+pubDate: "March 09 2025"
 heroImage: "/ourmoneyapp.webp"
 badge: "fullstack"
 tags: ["api","desktop", "web app"]
