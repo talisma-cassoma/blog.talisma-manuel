@@ -3,6 +3,8 @@ dist/
 .cache
 # dependencies
 node_modules/
+env
+images_to_convert/*
 
 # logs
 npm-debug.log*

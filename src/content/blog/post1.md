@@ -1,56 +1,48 @@
 ---
-title: "Demo Post 1"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+title: "Rebuilding produts - Blue River ML stack"
+description: "in this article we will try to rebuild Blue river machine learning stack based on the info they share online."
 pubDate: "Sep 10 2022"
-heroImage: "/post_img.webp"
-tags: ["tokio"]
+heroImage: "/bllue_river_stack.webp"
+tags: ["ML", "devOps"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer
-malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas
-pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse
-platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada
-fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea
-dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst
-quisque sagittis purus sit amet.
+Hey everyone! I recently stumbled across some info about how Blue River Technology, a company focused on precision agriculture, handles their machine learning, and I was seriously impressed. They've built a really smart setup for training, deploying, and monitoring their models, all aimed at maximizing performance, reproducibility, and efficiency out there in the fields. Let's dive in!
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum
-quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet.
-Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus.
-Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit
-ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt
-dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus
-arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed
-tempus urna et pharetra pharetra massa massa ultricies mi.
+Building Blocks: Training the Models
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam
-sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna
-fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et
-egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel
-turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra
-nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim
-praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus
-egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam
-ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor
-purus non. Amet dictum sit amet justo donec enim.
+Blue River isn't playing around when it comes to training their ML models. They've essentially got two powerhouses running, each with its own purpose:
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut
-consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra.
-Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor
-dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor
-dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque
-eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices
-tincidunt arcu. Id cursus metus aliquam eleifend mi.
+The Research Lab (On-Premise Muscle): For the initial experimentation and development, they use an on-premise cluster (basically, their own in-house supercomputer). This is managed by something called Slurm, which helps schedule and run all those complex training jobs.
+Why On-Premise? Control! They want complete control over their compute resources and the ability to launch thousands of experiments without being limited. Plus, it's more cost-effective in the long run and keeps them independent from relying solely on cloud services. Think of it as their own private playground for AI innovation.
+Production Power (Cloud-Based Scalability): When it's time to scale things up and move towards deploying models, they shift to a Kubernetes (K8s) cluster on AWS (Amazon Web Services). This is orchestrated by Argo Workflows, which automates the entire ML pipeline.
+Why Kubernetes & Argo? Scalability and automation are the name of the game here. They package their training code using Docker containers and store them in a container registry. This makes it easy to spin up new training instances, manage dependencies, and integrate seamlessly with their CI/CD (Continuous Integration/Continuous Deployment) pipelines. It's all about speed and efficiency!
+Getting the Models to the Field: Deployment and Edge Inference
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt
-dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat
-sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.
-Egestas integer eget aliquet nibh praesent tristique magna.
+Here's where things get really interesting. Blue River's models aren't just living in the cloud. They need to run on robots out in the fields, in real-time! This means super-low latency is critical.
+
+NVIDIA Jetson AGX Xavier is the hero! The robots leverage NVIDIA Jetson AGX Xavier for optimized performance.
+Model Optimization: They optimize their models for these edge devices using TensorRT. This involves a multi-step conversion process: PyTorch JIT (Just-In-Time compilation) → ONNX (Open Neural Network Exchange) → TensorRT Engine.
+Why the Conversion? TensorRT, a high-performance deep learning inference optimizer and runtime, doesn't directly support PyTorch JIT models, hence the need for conversion to ONNX format first.
+Distribution: These optimized models are stored in Artifactory (a repository manager) and then pushed to the robots using Jenkins CI/CD. Think of it as a continuous delivery pipeline for AI brains to power the machines in the fields.
+Keeping an Eye on Things: Monitoring and Reproducibility
+
+Training and deploying models is only half the battle. You also need to know what's going on! Blue River uses Weights & Biases (W&B) for this.
+
+Real-Time Monitoring: W&B gives them real-time insights into training progress, tracking metrics like loss, accuracy, and more.
+Experiment Tracking: They use W&B Artifacts to track everything related to their experiments: datasets, trained models, evaluation results. This makes it super easy to reproduce experiments and compare different models.
+Pipeline Visualization: W&B also helps them visualize their ML pipelines as DAGs (Directed Acyclic Graphs), making it easier to understand the flow of data and identify bottlenecks.
+Why W&B? It's all about reproducibility, organization, and a complete history of their ML pipelines. This ensures they can always understand exactly how a model was trained and deployed.
+The Big Picture: Key Benefits
+
+So, what's the bottom line? This stack allows Blue River Technology to:
+
+Achieve High Performance: Train efficiently on-premise and infer quickly on the edge.
+Scale Easily: Kubernetes and Argo Workflows automate and scale their workloads.
+Automate Deployment: CI/CD with Jenkins and Docker streamlines model deployment.
+Maintain Traceability: W&B Artifacts simplify experiment tracking and reproducibility.
+Boost Operational Efficiency: TensorRT accelerates inference on the robots.
+Final Thoughts
+
+Blue River Technology's ML stack is a great example of how to build a robust and efficient system for deploying AI in the real world. By combining on-premise resources with cloud scalability, optimizing for edge devices, and focusing on traceability, they're able to develop, train, and deploy machine learning models that are truly making a difference in precision agriculture.
+
+What do you think? Any parts of this stack that you're particularly interested in? Let me know in the comments!

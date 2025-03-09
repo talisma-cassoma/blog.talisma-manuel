@@ -1,16 +1,47 @@
 ---
-title: "Demo Post 2"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 11 2022"
-heroImage: "/post_img.webp"
+title: "Integrated finance control system"
+description: "architecting a integrated system to save daily expenses anywhere offline or online"
+pubDate: "Sep 12 2022"
+heroImage: "/public/ourmoney.webp"
+badge: "fullstack"
+tags: ["api","desktop", "web app"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+Hey everyone! I'm excited to finally share a project I've been working on in my spare time: OurMoney, a personal finance tracking app designed for simplicity, efficiency, and a little bit of offline functionality. Let me tell you about it!
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+### The Problem & My Solution:
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+Like many of you, I wanted a better way to track my expenses. Spreadsheets felt clunky, and a lot of existing apps were either overloaded with features I didn't need or just weren't flexible enough. I wanted something that could work seamlessly whether I was at my computer or on the go with just my phone, and that wouldn't leave me hanging if my internet connection decided to take a break.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+So, I built OurMoney! It's designed to let you easily record your financial transactions, categorize them as income or expenses, and keep everything synchronized. But here's the cool part: it's not just one app. It's actually a project with many apps synchronized!
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+Two Flavors for Maximum Flexibility:
+
+OurMoney is built as a microservices architecture. That means I have two main parts working together:
+
+Web App (React + Node.js in Docker): This is the version you'd use on your phone or when you're away from your main computer. It runs in a Docker container (because Docker is awesome!), and uses React for the front-end interface and Node.js for the backend API. It's all neatly packaged and ready to run anywhere.
+Desktop App (PyQt5 + SQLite): This is the app you'd use on your computer. It's built using PyQt5 (a Python binding for the Qt framework) for a native desktop experience, and SQLite for local data storage.
+The beauty of this setup is that both apps talk to the same backend, ensuring that your data is always in sync, even when you're offline.
+
+### Key Features Breakdown:
+
+* Intuitive Interface (Desktop App and Web App): I really focused on making the apps simple and easy to use
+* Data Management: For local storage i use SQLite database embedded in the desktop app. This is what allows you to record transactions even without an internet connection.
+* Synchronization: A Node.js API that I've deployed on Render (a great platform!) serves as the central hub for your data. The app clearly shows whether a transaction is synced or pending.
+* Consistent Timestamps: Ensures every transaction has a createdAt timestamp, avoiding any annoying None values.:
+* Pull-and-Push: The core of how the two apps stay in sync. The desktop app pushes any new unsynced data to the server, and then pulls the newest data from the server to keep up to date. This method makes sure you get the new information from one device to the other.
+* Manual & Automatic Sync: You can trigger synchronization manually, or it happens automatically in the background.
+* Database Suspension Strategy: Includes a strategy to recover from a suspended state (because things happen!).
+
+### Motivation & Future Plans:
+
+My primary motivation was simply to have a better way to track my spending, especially when I'm traveling or just not at my desk. Looking ahead, I have a few ideas for future features:
+
+Analytics and Reporting: Charts and graphs to visualize spending patterns.
+Financial Reports: Automatically generated reports for budgeting.
+Multi-User Support: Perhaps allowing multiple users on the same account (for families, roommates, etc.).
+Why I Built It:
+
+This project was a great opportunity to learn and experiment with different technologies. It was a learning experience with full stack development. Hopefully I'll be able to expand on it in the future and share some of my knowledge with you.
+
+I hope you enjoyed hearing about OurMoney! I'm always open to suggestions, so feel free to leave a comment.
