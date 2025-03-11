@@ -3,46 +3,101 @@ title: "Rebuilding produts - Blue River ML stack"
 description: "in this article we will try to rebuild Blue river machine learning stack based on the info they share online."
 pubDate: "March 09 2025"
 heroImage: "/bllue_river_stack.webp"
-tags: ["ML", "devOps"]
+tags: ["ML", "devOps", "Data analysis"]
 ---
 
-Hey everyone! I recently stumbled across some info about how Blue River Technology, a company focused on precision agriculture, handles their machine learning, and I was seriously impressed. They've built a really smart setup for training, deploying, and monitoring their models, all aimed at maximizing performance, reproducibility, and efficiency out there in the fields. Let's dive in!
+Hey everyone!  
 
-Building Blocks: Training the Models
+I recently came across some fascinating insights into how **Blue River Technology**, a company specializing in **precision agriculture**, approaches **machine learning**—and I was seriously impressed. They've built a highly efficient system for **training, deploying, and monitoring ML models**, all designed to **maximize performance, reproducibility, and efficiency in the field**. Let’s dive in!  
 
-Blue River isn't playing around when it comes to training their ML models. They've essentially got two powerhouses running, each with its own purpose:
+**But how they train and deploy AI Models?** 
 
-The Research Lab (On-Premise Muscle): For the initial experimentation and development, they use an on-premise cluster (basically, their own in-house supercomputer). This is managed by something called Slurm, which helps schedule and run all those complex training jobs.
-Why On-Premise? Control! They want complete control over their compute resources and the ability to launch thousands of experiments without being limited. Plus, it's more cost-effective in the long run and keeps them independent from relying solely on cloud services. Think of it as their own private playground for AI innovation.
-Production Power (Cloud-Based Scalability): When it's time to scale things up and move towards deploying models, they shift to a Kubernetes (K8s) cluster on AWS (Amazon Web Services). This is orchestrated by Argo Workflows, which automates the entire ML pipeline.
-Why Kubernetes & Argo? Scalability and automation are the name of the game here. They package their training code using Docker containers and store them in a container registry. This makes it easy to spin up new training instances, manage dependencies, and integrate seamlessly with their CI/CD (Continuous Integration/Continuous Deployment) pipelines. It's all about speed and efficiency!
-Getting the Models to the Field: Deployment and Edge Inference
+Their mission is to **train and deploy AI models that detect (locate in real-time camera frames) crops and weeds**. Since these models need to be both **accurate and lightweight**, they’ve **divided their workflow into two key parts**:  
 
-Here's where things get really interesting. Blue River's models aren't just living in the cloud. They need to run on robots out in the fields, in real-time! This means super-low latency is critical.
+1. **Research Workflow** – Focused on developing and experimenting with new ML models. They run experiments on their **on-premise cluster**, using **Slurm** to manage multiple jobs efficiently.  
+2. **Production Workflow** – Dedicated to optimizing the best research models for **real-time inference** on their farming robots. This involves converting models to **efficient formats (ONNX, TensorRT)** and deploying them on the **NVIDIA Jetson AGX Xavier** inside their **AutoTrac** system.  
 
-NVIDIA Jetson AGX Xavier is the hero! The robots leverage NVIDIA Jetson AGX Xavier for optimized performance.
-Model Optimization: They optimize their models for these edge devices using TensorRT. This involves a multi-step conversion process: PyTorch JIT (Just-In-Time compilation) → ONNX (Open Neural Network Exchange) → TensorRT Engine.
-Why the Conversion? TensorRT, a high-performance deep learning inference optimizer and runtime, doesn't directly support PyTorch JIT models, hence the need for conversion to ONNX format first.
-Distribution: These optimized models are stored in Artifactory (a repository manager) and then pushed to the robots using Jenkins CI/CD. Think of it as a continuous delivery pipeline for AI brains to power the machines in the fields.
-Keeping an Eye on Things: Monitoring and Reproducibility
+Let’s take a deeper look at both workflows.  
 
-Training and deploying models is only half the battle. You also need to know what's going on! Blue River uses Weights & Biases (W&B) for this.
+### Research Workflow  
 
-Real-Time Monitoring: W&B gives them real-time insights into training progress, tracking metrics like loss, accuracy, and more.
-Experiment Tracking: They use W&B Artifacts to track everything related to their experiments: datasets, trained models, evaluation results. This makes it super easy to reproduce experiments and compare different models.
-Pipeline Visualization: W&B also helps them visualize their ML pipelines as DAGs (Directed Acyclic Graphs), making it easier to understand the flow of data and identify bottlenecks.
-Why W&B? It's all about reproducibility, organization, and a complete history of their ML pipelines. This ensures they can always understand exactly how a model was trained and deployed.
-The Big Picture: Key Benefits
+Blue River’s **Research Lab** operates an **on-premise computing cluster** (essentially their own supercomputer) to train models. They use **Slurm** for scheduling and managing complex training jobs, think of it as Kubernetes for High-Performance Computing (HPC).  
 
-So, what's the bottom line? This stack allows Blue River Technology to:
+Here’s a breakdown of their **machine learning stack**:  
 
-Achieve High Performance: Train efficiently on-premise and infer quickly on the edge.
-Scale Easily: Kubernetes and Argo Workflows automate and scale their workloads.
-Automate Deployment: CI/CD with Jenkins and Docker streamlines model deployment.
-Maintain Traceability: W&B Artifacts simplify experiment tracking and reproducibility.
-Boost Operational Efficiency: TensorRT accelerates inference on the robots.
-Final Thoughts
+- **PyTorch**: They develop their custom models using PyTorch (which is a great choice YOLOv5 was also built using PyTorch! spoiler alert: i'll be using this architecture for tests).  
+- **Weights & Biases (W&B)**: For experiment tracking, monitoring, and collaboration.  
+- **ONNX & TensorRT**: For model optimization and deployment on edge devices.  
 
-Blue River Technology's ML stack is a great example of how to build a robust and efficient system for deploying AI in the real world. By combining on-premise resources with cloud scalability, optimizing for edge devices, and focusing on traceability, they're able to develop, train, and deploy machine learning models that are truly making a difference in precision agriculture.
+I got so excited reading about their system that I **rebuilt their ML stack** in a project! Check out my repo **[here](https://github.com/talisma-cassoma/Rebuilding-ML-Stack)**.  
 
-What do you think? Any parts of this stack that you're particularly interested in? Let me know in the comments!
+### How I recreated this without a Supercomputer? 
+
+Since I **don’t have access to an HPC cluster** and **don’t want to pay for cloud GPUs**, I came up with this approach:  
+
+1. **Train different YOLO models** on Google Colab using free GPUs.  
+2. **Monitor training** with **Weights & Biases (W&B)**.  
+3. **Save the trained PyTorch JIT (.pt) model** in **Artifactory**.  
+4. **Download the JIT model (.pt) locally** and convert it to **ONNX** on my PC.  
+5. **Package the ONNX model into an inference API (Flask) inside a Docker container**.  
+6. **Deploy the Docker container on a local Kubernetes cluster**.  
+
+### Data Analysis & Model Training Monitoring 
+
+In my repo **[here](https://github.com/talisma-cassoma/Rebuilding-ML-Stack)**, I trained various models using the **[Crop and Weed Detection dataset](https://universe.roboflow.com/crop-detection-uq1hb/crop-and-weed-detection-xer8u)** from **Roboflow**.  
+
+However, **training and deploying models is only half the battle**, you also need to monitor their performance. **Blue River Technology uses Weights & Biases (W&B) for this**, and I found it incredibly useful.  
+
+Let’s be honest **developing a custom web app from scratch just to monitor training runs** would be **painful, time-consuming, and expensive**. W&B **solves this problem effortlessly** by providing:  
+
+- **Real-time tracking** of metrics like loss, accuracy, and mAP.  
+- **Experiment logging** for easy model comparison.  
+- **Pipeline visualization** (DAGs) to track the entire ML workflow.  
+
+I used W&B as well on the project, and here’s an example of my **model monitoring dashboard**:  
+
+<p align="center">  
+  <img src="/wandb_monitoring_of_models.png">  
+</p>  
+
+They also use **W&B Artifacts** to track datasets, trained models, and evaluation results. This makes **experiment reproducibility much easier** and ensures they always know how a model was trained and deployed.  
+
+### Inference Pipeline: Deploying Models on AutoTrac 
+
+So, how do these models actually get deployed on **AutoTrac** (their AI-driven farming robot)?  
+
+Here’s the **Blue River deployment pipeline**:  
+
+The **PyTorch JIT** (Just-In-Time compilation ) trained models(the best i think) are converted to **ONNX format**, and from there they use **TensorRT** to convert to a TensorRT engine file, those models should be saved on **Artifactory** using a **Jenkins**. They use docker and **kubernetes clusters**.They also utilize an Argo workflow on top of a Kubernetes (K8s) cluster hosted in **AWS** and the PyTorch training services are deployed to the cloud using **Docker**.
+
+In my case, I recreated this pipeline locally:  
+
+- **All trained models (PyTorch JIT .pt) on colab are stored in Artifactory**.  
+- **I built a Flask API to convert the models to ONNX**.  
+- **The ONNX model runs inside a Docker container managed by Kubernetes**.  
+
+Check out my **Colab notebook** **[here](https://github.com/talisma-cassoma/Rebuilding-ML-Stack/blob/main/plant_detection_train_and_monitoring.ipynb)** to see how I replicated this setup.  
+
+
+## **Final Thoughts 💡**  
+
+**Blue River Technology’s ML stack is an excellent example** of how to **efficiently train, deploy, and monitor AI models for real-world applications**. Their setup ensures:  
+
+✅ **Scalability** – Combining on-premise resources with cloud infrastructure.  
+✅ **Optimization** – Using ONNX & TensorRT for edge AI performance.  
+✅ **Reproducibility** – Keeping a full history of every experiment with W&B.  
+✅ **Automation** – Streamlining deployment with Kubernetes and Argo Workflows.  
+
+By following a similar approach, I was able to **rebuild this stack using free and local resources**—a great way to **experiment with real-world ML deployment**.  
+
+**What do you think?**  Any part of this stack that interests you the most?  
+
+### sources: 
+
+Blue river posts:
+
+* https://medium.com/pytorch/ai-for-ag-production-machine-learning-for-agriculture-e8cfdb9849a1
+* https://developer.nvidia.com/blog/how-ai-and-robotics-are-driving-agricultural-productivity-and-sustainability/
+
+Dataset:
+* https://universe.roboflow.com/crop-detection-uq1hb/crop-and-weed-detection-xer8u
