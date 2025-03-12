@@ -2,12 +2,14 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+	  extend: {},
 	},
-	plugins: [require("@tailwindcss/typography"),require("daisyui")],
+	darkMode: ["class", '[data-theme="dark"]'], // Permite alternar o tema via data-theme
+	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 	daisyui: {
-		themes: ["light", "dark", "dracula","autumn"], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dracula", // name of one of the included themes for dark mode
-		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
-	  }
-}
+	  themes: ["light", "dark", "dracula", "autumn"],
+	  darkTheme: "dracula",
+	  logs: false,
+	},
+  };
+  
