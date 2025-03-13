@@ -27,7 +27,7 @@ import { Icon } from "astro-icon/components";
 
   // Aplica o tema salvo no carregamento da página
   document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    const theme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", theme);
   });
 </script>

@@ -1,4 +1,4 @@
-this template was based on the <a href="https://manuelernestog.github.io/">manuel ernestog</a> blog
+specials thanks to  <a href="https://manuelernestog.github.io/">Manuel Ernesto</a> for the astro base template
 
 ## Project Structure
 

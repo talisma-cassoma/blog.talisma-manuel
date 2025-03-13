@@ -39,10 +39,21 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 <head>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const savedTheme = localStorage.getItem("theme") || "light";
-        document.documentElement.setAttribute("data-theme", savedTheme);
+    <script is:inline>
+      // Obtém o tema armazenado ou define como 'light'
+      const getStoredTheme = () => {
+        return localStorage.getItem('theme') || 'light';
+      }
+    
+      // Aplica o tema imediatamente para prevenir flash
+      const theme = getStoredTheme();
+      document.documentElement.setAttribute('data-theme', theme);
+    
+      // Reaplica o tema após a navegação
+      document.addEventListener('astro:after-swap', () => {
+        const currentTheme = getStoredTheme();
+        document.documentElement.setAttribute('data-theme', currentTheme);
       });
     </script>
+    
   
