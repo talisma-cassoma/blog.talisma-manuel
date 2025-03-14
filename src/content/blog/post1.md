@@ -5,8 +5,7 @@ pubDate: "March 09 2025"
 heroImage: "/bllue_river_stack.webp"
 tags: ["ML", "devOps", "Data analysis"]
 ---
-
-Hey everyone!  
+ 
 
 I recently came across some fascinating insights into how **Blue River Technology**, a company specializing in **precision agriculture**, approaches **machine learning**—and I was seriously impressed. They've built a highly efficient system for **training, deploying, and monitoring ML models**, all designed to **maximize performance, reproducibility, and efficiency in the field**. Let’s dive in!  
 
@@ -25,9 +24,9 @@ Blue River’s **Research Lab** operates an **on-premise computing cluster** (es
 
 Here’s a breakdown of their **machine learning stack**:  
 
-- **PyTorch**: They develop their custom models using PyTorch (which is a great choice YOLOv5 was also built using PyTorch! spoiler alert: i'll be using this architecture for tests).  
+- **PyTorch**: They develop their custom models using PyTorch (which is a great choice YOLOv5 was also built using PyTorch ! spoiler alert: i'll be using this architecture for tests).  
 - **Weights & Biases (W&B)**: For experiment tracking, monitoring, and collaboration.  
-- **ONNX & TensorRT**: For model optimization and deployment on edge devices.  
+- **ONNX & TensorRT**: For model optimization and deployment on edge devices(the NVIDIA Jetson AGX Xavier).  
 
 I got so excited reading about their system that I **rebuilt their ML stack** in a project! Check out my repo **[here](https://github.com/talisma-cassoma/Rebuilding-ML-Stack)**.  
 
@@ -35,7 +34,7 @@ I got so excited reading about their system that I **rebuilt their ML stack** in
 
 Since I **don’t have access to an HPC cluster** and **don’t want to pay for cloud GPUs**, I came up with this approach:  
 
-1. **Train different YOLO models** on Google Colab using free GPUs.  
+1. **Train different YOLO models** on Google Colab using the free GPUs.  
 2. **Monitor training** with **Weights & Biases (W&B)**.  
 3. **Save the trained PyTorch JIT (.pt) model** in **Artifactory**.  
 4. **Download the JIT model (.pt) locally** and convert it to **ONNX** on my PC.  
@@ -54,13 +53,18 @@ Let’s be honest **developing a custom web app from scratch just to monitor tra
 - **Experiment logging** for easy model comparison.  
 - **Pipeline visualization** (DAGs) to track the entire ML workflow.  
 
-I used W&B as well on the project, and here’s an example of my **model monitoring dashboard**:  
+I used W&B in my project, and it helped me understand why so many ML and **data science teams** rely on it. I chose to use YOLOv5 instead of building a PyTorch model from scratch for a faster setup and to get straight to the point. Additionally, its native integration with W&B saved me time. 
 
+Take look here to my **model monitoring dashboard** below      
 <p align="center">  
-  <img src="/wandb_monitoring_of_models.png">  
+  <img src="/WandB_models_training_infos.png">  
 </p>  
 
-They also use **W&B Artifacts** to track datasets, trained models, and evaluation results. This makes **experiment reproducibility much easier** and ensures they always know how a model was trained and deployed.  
+They also use **W&B Artifacts** to track the datasets used in training, trained model configurations, and evaluation results. This makes **experiment reproducibility much easier** and ensures that teams always know how a model was trained and deployed, allowing for seamless sharing across teams, all within one software. as you can see here:
+
+<p align="center">  
+  <img src="/WandB_models_registry.png">  
+</p>  
 
 ### Inference Pipeline: Deploying Models on AutoTrac 
 
@@ -88,7 +92,7 @@ Check out my **Colab notebook** **[here](https://github.com/talisma-cassoma/Rebu
 ✅ **Reproducibility** – Keeping a full history of every experiment with W&B.  
 ✅ **Automation** – Streamlining deployment with Kubernetes and Argo Workflows.  
 
-By following a similar approach, I was able to **rebuild this stack using free and local resources**—a great way to **experiment with real-world ML deployment**.  
+By following a similar approach, I was able to **rebuild this stack using free and local resources** a great way to **experiment with real-world ML deployment**.  
 
 **What do you think?**  Any part of this stack that interests you the most?  
 
