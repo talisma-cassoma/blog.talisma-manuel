@@ -7,8 +7,8 @@ module.exports = {
 	darkMode: ["class", '[data-theme="dark"]'], // Permite alternar o tema via data-theme
 	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 	daisyui: {
-	  themes: ["light", "dark", "dracula", "autumn"],
-	  darkTheme: "dracula",
+	  themes: ["dark", "light"],
+	  darkTheme: "light",
 	  logs: false,
 	},
   };
