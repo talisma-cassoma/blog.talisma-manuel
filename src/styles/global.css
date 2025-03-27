@@ -1,3 +1,19 @@
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
+
+[data-theme="light"],[data-theme="dark"] {
+    --color-green-200: #00B37E;
+
+    .badge-secondary{
+      background-color: var(--color-green-200);
+      border: none;
+      padding: .8em;
+    }
+    .badge-secondary:hover {
+      background-color: var(--color-green-200);
+    }
+    .bg-primary{
+      background-color:  var(--color-green-200);
+    }
+  }
