@@ -1,8 +1,7 @@
 ---
-title: "Rebuilding produts - Zendure solarflow800 mobile app"
-description: "in this article we will try to rebuild the mobile app responsible for panel monitoring."
-pubDate: "March 26 2025"
-heroImage: "/zendure.mobile.app.png"
-badge: "fullstack"
-tags: ["mobile"]
+title: "building my AI plant assistent"
+description: "From train to autameted deploy, An E2E strategy for training and deploying plant disease detection AI models."
+heroImage: "/plant_disease_detection_proj/preview.webp"
+pubDate: "March 03 2025"
+tags: ["machine learning", "devops", "data analysis"]
 ---

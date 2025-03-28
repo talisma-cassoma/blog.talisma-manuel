@@ -9,6 +9,10 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const last_posts = posts.slice(0, 3);
+
+// Define the base URL dynamically
+const BASE_URL = import.meta.env.SITE || "http://localhost:4321"; // Change the port if needed
+
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -31,7 +35,7 @@ const last_posts = posts.slice(0, 3);
   </div>
 
   <div>
-    <div class="text-3xl w-full font-bold mb-2">Top 3 projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2">Top 3 projects</div>
   </div>
 
   <HorizontalCard
@@ -54,7 +58,7 @@ const last_posts = posts.slice(0, 3);
   title="AI plant assistent"
   img="/plant_disease_detection_proj/preview.webp"
   desc="From train to autameted deploy, An E2E strategy for training and deploying plant disease detection AI models."
-  url="https://github.com/talisma-cassoma/plantaiapp"
+  url="url={`${BASE_URL}/blog/building-my-ai-plant-assistent`}"
   badge="Mobile & Machine Learning"
 />
 
