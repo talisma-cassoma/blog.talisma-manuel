@@ -24,7 +24,7 @@ OurMoney comprises three main components that work together:
 <h3 class="flex items-center gap-1"> Desktop App <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E"><path d="M400-200v-80H160q-33 0-56.5-23.5T80-360v-400q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v400q0 33-23.5 56.5T800-280H560v80h40q17 0 28.5 11.5T640-160q0 17-11.5 28.5T600-120H360q-17 0-28.5-11.5T320-160q0-17 11.5-28.5T360-200h40ZM160-360h640v-400H160v400Zm0 0v-400 400Z"/></svg></h3>
 
 <p align="center">  
-  <img src="/ourmoney.desktop_app.png" alt="OurMoney desktop GUI">  
+  <img src="/ourmoney.desktop_app.webp" alt="OurMoney desktop GUI">  
   <em>desktop GUI built with pyqt</em> 
 </p> 
 
@@ -82,7 +82,7 @@ The all code of desktop app can be found [here](https://github.com/talisma-casso
 <h3 class="flex items-center gap-1">Web App <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q146 0 255.5 91.5T872-559h-82q-19-73-68.5-130.5T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h80v120h-40L168-552q-3 18-5.5 36t-2.5 36q0 131 92 225t228 95v80Zm364-20L716-228q-21 12-45 20t-51 8q-75 0-127.5-52.5T440-380q0-75 52.5-127.5T620-560q75 0 127.5 52.5T800-380q0 27-8 51t-20 45l128 128-56 56ZM620-280q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Z"/></svg></h3>
 
 <p align="center">  
-  <img src="/ourmoney.web_app.png" alt="OurMoney web app">  
+  <img src="/ourmoney.web_app.webp" alt="OurMoney web app">  
   <em>OurMoney web app built with Reactjs</em> 
 </p> 
 

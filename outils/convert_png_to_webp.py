@@ -19,5 +19,5 @@ def convert_images_to_webp(input_dir, output_dir):
 
 if __name__ == "__main__":
     input_directory = "images_to_convert"  # the input directory
-    output_directory = "images_to_convert/webp_images"  # the output directory
+    output_directory = "../public"  # the output directory
     convert_images_to_webp(input_directory, output_directory)

@@ -2,11 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import createSlug from "../lib/createSlug";
 import ThemeToggle from "../components/ThemeToggle.astro";
 
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
 const last_posts = posts.slice(0, 3);
 
@@ -23,43 +24,48 @@ const BASE_URL = Astro.url.origin;
     <div class="text-3xl py-3 font-bold">Embedded Software Engineer</div>
     <div class="py-2">
       <text class="text-lg">
-        Welcome to my little world, It's a regular guy who loves programming, my profile is all 
-        about what i'am learning in my dialy researches. I'm focused on embedded systems programming & electronic.
+        Welcome to my little world, It's a regular guy who loves programming, my
+        profile is all about what i'am learning in my dialy researches. I'm
+        focused on embedded systems programming & electronic.
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn" href="http://linkedin.com/in/talisma-manuel-88ba571b2/" target="_blank"> Let's connect!</a>
+      <a
+        class="btn"
+        href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
+        target="_blank"
+      >
+        Let's connect!</a
+      >
     </div>
   </div>
 
   <div>
     <div class="text-3xl w-full font-bold mb-2">Top 3 projects</div>
   </div>
-
   <HorizontalCard
-  title="Underwater drone vision system"
-  img="/doceanlab_proj/preview.webp"
-  desc="D≈OceanLab is a underwater drone for Research purposes, it films and recognizes marine species using deep learning"
-  url="https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab"
-  badge="End-To-End CV System"
-/>
-<div class="divider my-0"></div>
-<HorizontalCard
-  title="PCB defects recognition"
-  img="/pcb_defects_recognition_proj/preview.webp"
-  desc="A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards. Using computer vision and deep learning."
-  url="https://github.com/talisma-cassoma/pcb-components-detection-recognition"
-   badge="End-To-End CV System"
-/>
-<div class="divider my-0"></div>
-<HorizontalCard
-  title="AI plant assistent"
-  img="/plant_disease_detection_proj/preview.webp"
-  desc="From train to autameted deploy, An E2E strategy for training and deploying plant disease detection AI models."
-  url={`${BASE_URL}/blog/building-my-ai-plant-assistent`}
-  badge="Mobile & Machine Learning"
-/>
-
+    title="AI plant assistent"
+    img="/plant_disease_detection_proj_preview.webp"
+    desc="From train to autameted deploy, An E2E strategy for training and deploying plant disease detection AI models."
+    url="/blog/building-my-ai-plant-assistent"
+    badge="Mobile & Machine Learning"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Underwater drone vision system"
+    img="/doceanlab_proj_preview.webp"
+    desc="D≈OceanLab is a underwater drone for Research purposes, it films and recognizes marine species using deep learning"
+    url="https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab"
+    badge="End-To-End CV System"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="PCB defects recognition"
+    img="/pcb_defects_recognition_proj_preview.webp"
+    desc="A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards. Using computer vision and deep learning."
+    url="https://github.com/talisma-cassoma/pcb-components-detection-recognition"
+    badge="End-To-End CV System"
+  />
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
   </div>

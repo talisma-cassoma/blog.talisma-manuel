@@ -60,14 +60,14 @@ I used W&B in my project, and it helped me understand why so many **machine lear
 
 Take look here to my **W&B monitoring dashboard** below      
 <p align="center">  
-  <img src="/WandB_models_training_infos.png" alt="yolov5 tainning monitoring dashboard">
+  <img src="/WandB_models_training_infos.webp" alt="yolov5 tainning monitoring dashboard">
   <em>monitoring dashboard</em> 
 </p>  
 
 In Blue River, they also use **W&B Artifacts** to track the datasets used in training, trained model configurations, and evaluation results. This makes **experiment reproducibility much easier** and **ensures that teams always know how a model was trained and deployed, allowing for seamless sharing across teams**, all within one software. as you can see here:
 
 <p align="center">  
-  <img src="/WandB_models_registry.png" alt=" saved models in W&B">  
+  <img src="/WandB_models_registry.webp" alt=" saved models in W&B">  
   <em>saved models in W&B</em> 
 </p>  
 
@@ -88,7 +88,7 @@ In my case, I recreated this pipeline locally:
 - **I also built other micro service, a Flask API designed to serve the models and handle inference requests, it runs inside a Docker container managed by Kubernetes**.
 
 <p align="center">  
-  <img src="/deploy_pipeline.png" alt="the deploy workflow">  
+  <img src="/deploy_pipeline.webp" alt="the deploy workflow">  
   <em>my deploy workflow</em> 
 </p>
 Lets explain i what i did:
@@ -102,49 +102,48 @@ Finally, to deploy the API at scale, I turned to Kubernetes. On my local Kuberne
 
 **Blue River Technology’s ML stack is an excellent example** of how to **efficiently train, deploy, and monitor AI models for real-world applications**. Their setup ensures:  
 
-
 <ul class="liste max-w-screen-lg grid grid-cols-1 sm:grid-cols-[repeat(2,minmax(min-content,auto))] items-center">
-  <div >
-    <p class="flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
-        <path d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-      </svg> 
-      <b>Scalability</b>
-    </p>
-  </div>
-    <span>- Combining on-premise resources with cloud infrastructure.</span>
-
-  <div >
-    <p class="flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
-        <path d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-      </svg> 
-      <b>Optimization</b>
-    </p>
-  </div>
-    <span>- Using ONNX & TensorRT for edge AI performance.</span>
-
-  <div >
-    <p class="flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
-        <path d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-      </svg> 
-      <b>Reproducibility</b>
-    </p>
-  </div>
-    <span>- Keeping a full history of every experiment with W&B.</span>
-
-  <div >
-    <p class="flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
-        <path d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-      </svg> 
-      <b>Automation</b>
-    </p>
-  </div>
-    <span>- Streamlining deployment with Kubernetes and Argo Workflows.</span>
+    <div>
+       <p class="flex gap-1 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
+                <path
+                    d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+            <b>Scalability</b>
+        </p>
+    </div>
+    <span>: Combining on-premise resources with cloud infrastructure.</span>
+    <div>
+       <p class="flex gap-1 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
+                <path
+                    d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+            <b>Optimization</b>
+        </p>
+    </div>
+    <span>: Using ONNX & TensorRT for edge AI performance.</span>
+    <div>
+       <p class="flex gap-1 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
+                <path
+                    d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+            <b>Reproducibility</b>
+        </p>
+    </div>
+    <span>: Keeping a full history of every experiment with W&B.</span>
+    <div>
+       <p class="flex gap-1 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00B37E">
+                <path
+                    d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+            <b>Automation</b>
+        </p>
+    </div>
+    <span>: Streamlining deployment with Kubernetes and Argo Workflows.</span>
 </ul>
-
 
 
 By following a similar approach, I was able to **rebuild this stack using free and local resources** a great way to **experiment with real-world ML deployment**.  
