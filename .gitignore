@@ -3,7 +3,9 @@ dist/
 .cache
 # dependencies
 node_modules/
-env
+venv/
+*/env/
+
 images_to_convert/*
 
 # logs
