@@ -1,12 +1,12 @@
 ---
-title: "Rebuilding produts - Blue River ML stack"
+title: "Rebuilding products - Blue River ML stack"
 description: "in this article we will try to rebuild Blue River machine learning stack based on the info they share online."
 pubDate: "March 18 2025"
-heroImage: "/bllue_river_stack.webp"
+heroImage: "/bllue_river_stack_thumb.webp"
 tags: ["machine learning", "devops", "data analysis"]
 ---
 
-I recently came across some fascinating insights into how **Blue River**, a company specializing in **precision agriculture**, approaches **machine learning(ML)** and I was seriously impressed. They've built a highly efficient system for **training, deploying, and monitoring ML models**, all designed to **maximize performance, reproducibility, and efficiency in the field**. Let’s dive in!  
+I recently came across some fascinating insights into how **Blue River**, a company specializing in **precision agriculture**, approaches **machine learning (ML)** and I was seriously impressed. They've built a highly efficient system for **training, deploying, and monitoring ML models**, all designed to **maximize performance, reproducibility, and efficiency in the field**. Let’s dive in!  
 
 **But how they train and deploy AI Models?** 
 
@@ -27,13 +27,13 @@ Blue River’s **Research Lab** operates an **on-premise computing cluster** (es
 
 Here’s a breakdown of their **machine learning stack**:  
 
-- **PyTorch**: They develop their custom models using PyTorch (which is a great choice YOLOv5 was also built using PyTorch ! spoiler alert: i'll be using this architecture for demo).  
+- **PyTorch**: They develop their custom models using PyTorch (which is a great choice YOLOv5 was also built using PyTorch! Spoiler Alert: I'll be using this architecture for demo).  
 - **Weights & Biases (W&B)**: For experiment tracking, monitoring, and collaboration.  
 - **ONNX & TensorRT**: For model optimization and deployment on edge devices(the NVIDIA Jetson AGX Xavier).  
 
 I got so excited reading about their system that I **rebuilt their ML stack** in a project! Check out my repo **[here](https://github.com/talisma-cassoma/Rebuilding-ML-Stack)**.  
 
-### How I recreated this without a Supercomputer? 
+### How did I recreated this without a Supercomputer? 
 
 Since I **don’t have access to an HPC cluster** and **don’t want to pay for cloud GPUs**, I came up with this approach:  
 
@@ -79,7 +79,7 @@ So, how do these models actually get deployed on **AutoTrac** (their AI-driven f
 
 Here’s the **Blue River deployment pipeline**:  
 
-The **PyTorch JIT** (Just-In-Time compilation ) trained models(the best i think) are converted to **ONNX format**, and from there they use **TensorRT** to convert to a TensorRT engine file, those models should be saved on **Artifactory** using a **Jenkins CI/CD pipeline**. For containers they use **Docker** and **kubernetes clusters**.They also utilize an Argo workflow on top of a **Kubernetes (K8s) cluster** hosted in **AWS**. For example, the PyTorch training services are deployed to the cloud using Docker.
+The **PyTorch JIT** (Just-In-Time compilation ) trained models (the best I think) are converted to **ONNX format**, and from there they use **TensorRT** to convert to a TensorRT engine file, those models should be saved on **Artifactory** using a **Jenkins CI/CD pipeline**. For containers they use **Docker** and **kubernetes clusters**. They also utilize an Argo workflow on top of a **Kubernetes (K8s) cluster** hosted in **AWS**. For example, the PyTorch training services are deployed to the cloud using Docker.
 
 In my case, I recreated this pipeline locally:  
 
@@ -91,9 +91,9 @@ In my case, I recreated this pipeline locally:
   <img src="/deploy_pipeline.webp" alt="the deploy workflow">  
   <em>my deploy workflow</em> 
 </p>
-Lets explain i what i did:
+Let's explain what I did:
 
-I set up a **Continuous Integration (CI) pipeline** using **GitHub Actions**. You know, a generic setup, on each commit in the main brunch the pipeline automatically builds the Flask API into a Docker container. It then pushes the container to **Docker Hub**, where it can be accessed by other environments. This automation ensures that the API is always up-to-date, with no manual intervention needed.
+I set up a **Continuous Integration (CI) pipeline** using **GitHub Actions**. You know, a generic setup, on each commit in the main brznch the pipeline automatically builds the Flask API into a Docker container. It then pushes the container to **Docker Hub**, where it can be accessed by other environments. This automation ensures that the API is always up-to-date, with no manual intervention needed.
 
 Finally, to deploy the API at scale, I turned to Kubernetes. On my local Kubernetes cluster, I configured it to pull the latest Docker container from Docker Hub and deploy it as a scalable service. Kubernetes handles scaling, load balancing, and managing the service, making sure the inference API is always available and ready to serve predictions. The code lays in [repository](https://github.com/talisma-cassoma/Rebuilding-ML-Stack).
 
@@ -146,7 +146,7 @@ Finally, to deploy the API at scale, I turned to Kubernetes. On my local Kuberne
 </ul>
 
 
-By following a similar approach, I was able to **rebuild this stack using free and local resources** a great way to **experiment with real-world ML deployment**.  
+By following a similar approach, I was able to **rebuild this stack using free and local resources**, a great way to **experiment with real-world ML deployment**.  
 
 **What do you think?**  Any part of this stack that interests you the most?  
 

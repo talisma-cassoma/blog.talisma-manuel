@@ -3,30 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
+<BaseLayout title="Projects" sideBarActiveItemID="projects">
   <div>
     <div class="text-3xl w-full font-bold mb-5">all projects</div>
   </div>
   <HorizontalCard
     title="Underwater drone vision system"
-    img="/doceanlab_proj_preview.webp"
+    previewImage="/doceanlab_proj_preview.webp"
+    postImage="/doceanlab_proj_thumb.webp"
     desc="D≈OceanLab is a underwater drone for Research purposes, it films and recognizes marine species using deep learning"
     url="https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab"
+    badge="End-To-End CV System"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="PCB defects recognition"
-    img="/pcb_defects_recognition_proj_preview.webp"
+    previewImage="/pcb_defects_recognition_proj_preview.webp"
+    postImage="/pcb_defects_recognition_proj_thumb.webp"
     desc="A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards. Using computer vision and deep learning."
     url="https://github.com/talisma-cassoma/pcb-components-detection-recognition"
+    badge="End-To-End CV System"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="AI plant assistent"
-    img="/plant_disease_detection_proj_preview.webp"
+    previewImage="/plant_disease_detection_proj_preview.webp"
+    postImage="/plant_disease_detection_proj_thumb.webp"
     desc="From train to autameted deploy, An E2E strategy for training and deploying plant disease detection AI models."
-    url="https://github.com/talisma-cassoma/plantaiapp"
-    badge="ongoing"
+    url="/blog/building-my-ai-plant-assistant-an-e2e-journey"
+    badge="Mobile & Machine Learning"
   />
-
 </BaseLayout>

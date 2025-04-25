@@ -1,40 +1,61 @@
 ---
-const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
+const { title, previewImage , postImage, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+
+// Basic validation/check if images are provided
+const hasPreviewImage = previewImage && typeof previewImage === 'object';
+const hasPostImage = postImage && typeof postImage === 'object';
 ---
 
-<div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
->
+<div class="group rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
-      {
-        img && (
-          <Image
-            src={img}
-            width={750}
-            height={422}
-            format="webp"
-            alt={title}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
-          />
-        )
-      }
-      <div class="grow w-full">
+
+      {(previewImage || postImage) && (
+        <div class="relative w-full md:w-[13rem] aspect-video overflow-hidden rounded-lg shrink-0">
+          
+          {previewImage && (
+            <Image
+              src={previewImage}
+              width={750}
+              height={422}
+              format="webp"
+              alt={`${title} - Preview`}
+              class="absolute inset-0 max-w-full md:max-w-[13rem] rounded-lg transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0"
+              loading="lazy"
+            />
+          )}
+
+          {postImage && (
+            <Image
+              src={postImage}
+              width={750}
+              height={422}
+              format="webp"
+              alt={`${title} - Post Image`}
+              class={`absolute inset-0 max-w-full md:max-w-[13rem] rounded-lg transition-opacity duration-300 ease-in-out ${
+                previewImage ? 'opacity-0 group-hover:opacity-100' : 'opacity-100 group-hover:opacity-100'
+              }`}
+              loading="lazy"
+            />
+          )}
+        </div>
+      )}
+
+      <div class="grow w-full mt-4 md:mt-0 md:ml-4">
         <h1 class="text-xl font-bold">
           {title}
           {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
-        <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
+        <div class="card-actions justify-end mt-2">
+          {tags &&
+            tags.map((tag) => (
+              <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                {tag}
+              </a>
+            ))
           }
         </div>
       </div>
