@@ -1,46 +1,82 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HorizontalCard from "@/components/HorizontalCard.astro";
+import TopProjectCards from "@/components/TopProjectCards.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug";
-import ThemeToggle from "../components/ThemeToggle.astro";
+import createSlug from "@/lib/createSlug";
+import ThemeToggle from "@/components/ThemeToggle.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
 const last_posts = posts.slice(0, 3);
-
 const BASE_URL = Astro.url.origin;
+const projects = [    
+  {
+    title: "PCB Defects Recognition",
+    previewImage: "/pcb_defects_recognition_proj_thumb.webp",
+    postImage: "/pcb_defects_recognition_proj_thumb.webp",
+    desc: "A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards using computer vision and deep learning.",
+    url: "https://github.com/talisma-cassoma/pcb-components-detection-recognition",
+    githubRepo: "talisma-cassoma/pcb-components-detection-recognition",
+    badge: ["Computer Vision", "Deep Learning"],
+    stack: ["python", "opencv", "pytorch", "tensorflow" ],
+  },
+  {
+    title: "AI Plant Assistant",
+    previewImage: "/plant_disease_detection_proj_thumb.webp",
+    postImage: "/plant_disease_detection_proj_thumb.webp",
+    desc: "An end-to-end mobile application designed for real-time offline crop disease detection. It integrates a custom-trained computer vision model directly into a responsive mobile interface to help farmers diagnose plant health instantly",
+    url: "/blog/building-my-ai-plant-assistant-an-e2e-journey",
+    badge: ["Mobile", "Machine Learning"],
+    stack: ["python",  "opencv", "reactnative"],
+  },
+  {
+    title: "Underwater Drone Vision System",
+    previewImage: "/doceanlab_proj_thumb.webp",
+    postImage: "/doceanlab_proj_thumb.webp",
+    desc: "D≈OceanLab is an underwater drone for research purposes; it films and recognizes marine species using deep learning.",
+    url: "https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab",
+    badge: ["Mechanical", "Computer Vision"],
+    githubRepo: "talisma-cassoma/UnderWaterDrone-D-OceanLab",
+    stack: ["python"],
+  },
+];
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="flex justify-between">
-      <div class="text-xl py-1">Hey there 👋</div>
-      <ThemeToggle />
+  <!-- <div class="grid gap-6 w-full box-border overflow-hidden"> -->
+    <div class="pb-12 mt-5">
+      <div class="flex justify-between">
+        <div class="text-xl py-1">Hey there 👋</div>
+        <ThemeToggle />
+      </div>
+      <div class="text-5xl font-bold">I'm Talisma Manuel</div>
+      <div class="text-3xl py-3 font-bold">Embedded Software Engineer</div>
+      <div class="py-2">
+        <text class="text-lg">
+          Welcome to my personal space! I'm a developer passionate about programming, 
+          electronics, and embedded systems. Here, I share my daily learnings, research, 
+          and hands-on projects.
+        </text>
+      </div>
+      <div class="mt-8">
+        <a
+          class="btn text-[--color-green-200]"
+          href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
+          target="_blank"
+        >
+          Let's connect!</a
+        >
+      </div>
     </div>
-    <div class="text-5xl font-bold">I'm Talisma Manuel</div>
-    <div class="text-3xl py-3 font-bold">Embedded Software Engineer</div>
-    <div class="py-2">
-      <text class="text-lg">
-        Welcome to my little world, It's a regular guy who loves programming, my
-        profile is all about what i'am learning in my dialy researches. I'm
-        focused on embedded systems programming & electronic.
-      </text>
-    </div>
-    <div class="mt-8">
-      <a
-        class="btn text-[--color-green-200]"
-        href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
-        target="_blank"
-      >
-        Let's connect!</a
-      >
-    </div>
-  </div>
 
-  <div>
+    <p class="flex justify-center gap-1 text-3xl w-full font-bold mb-2 mt-12">
+      Top 3 Open Source Projects
+    </p>
+    <TopProjectCards projects={projects} />
+    <!-- <div>
     <div class="flex items-center gap-1 text-3xl w-full font-bold mb-2">
       Top 3 projects
       <svg
@@ -80,23 +116,49 @@ const BASE_URL = Astro.url.origin;
     desc="A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards. Using computer vision and deep learning."
     url="https://github.com/talisma-cassoma/pcb-components-detection-recognition"
     badge="End-To-End CV System"
-  />
-  <div>
-    <div class="flex items-center gap-1 text-3xl w-full font-bold mb-5 mt-10">
-      Latest from blog
+  /> -->
+
+    <div class="flex items-center gap-2">
+      <img
+        src="/mobile.png"
+        class="w-[24rem] h-[20rem]"
+        style="background: transparent !important;"
+      />
+      <div>
+        <p>
+          Experience with end to end mobile development, from design,
+          development, to deployment of mobile apps
+        </p>
+        <p>
+          Proven experience with agile Scrum and Kanban methodologies using
+          Taiga and Jira.
+        </p>
+        <a
+          href=""
+          target="_blank"
+          class="text-sm font-medium text-emerald-600 hover:text-emerald-500"
+          >see more →</a
+        >
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 text-3xl w-fit font-bold mb-5 mt-12">
+      <p class="flex justify-center gap-1 text-3xl w-full font-bold mb-2">
+        Latest from blog
+      </p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        height="24px"
+        height="28px"
         viewBox="0 -960 960 960"
-        width="24px"
+        width="28px"
         fill="#00B37E"
-        ><path
-          d="m580-512-60-34v-68l60-34 60 34v68l-60 34Zm0 92 140-80v-160l-140-80-140 80v160l140 80Zm-72 220h224q-7 26-24 42t-44 20L228-85q-33 5-59.5-15.5T138-154L85-591q-4-33 16-59t53-30l46-6v80l-36 5 54 437 290-36Zm-148-80q-33 0-56.5-23.5T280-360v-440q0-33 23.5-56.5T360-880h440q33 0 56.5 23.5T880-800v440q0 33-23.5 56.5T800-280H360Zm0-80h440v-440H360v440Zm220-220ZM218-164Z"
-        ></path></svg
       >
+        <path
+          d="m580-512-60-34v-68l60-34 60 34v68l-60 34Zm0 92 140-80v-160l-140-80-140 80v160l140 80Zm-72 220h224q-7 26-24 42t-44 20L228-85q-33 5-59.5-15.5T138-154L85-591q-4-33 16-59t53-30l46-6v80l-36 5 54 437 290-36Zm-148-80q-33 0-56.5-23.5T280-360v-440q0-33 23.5-56.5T360-880h440q33 0 56.5 23.5T880-800v440q0 33-23.5 56.5T800-280H360Zm0-80h440v-440H360v440Zm220-220ZM218-164Z"
+        ></path>
+      </svg>
     </div>
-  </div>
-
+  <!-- </div> -->
   {
     last_posts.map((post) => {
       const { title, heroImage, description, badge } = post.data;
@@ -105,7 +167,10 @@ const BASE_URL = Astro.url.origin;
         <>
           <HorizontalCard
             title={title}
-            previewImage={(heroImage ?? "").replace(/_thumb\.webp$/, '_preview.webp')}
+            previewImage={(heroImage ?? "").replace(
+              /_thumb\.webp$/,
+              "_preview.webp",
+            )}
             postImage={heroImage}
             desc={description}
             url={"/blog/" + createSlug(title, post.slug)}
@@ -117,5 +182,5 @@ const BASE_URL = Astro.url.origin;
       );
     })
   }
-  
 </BaseLayout>
+

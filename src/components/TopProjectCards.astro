@@ -1,0 +1,232 @@
+---
+import { Icon  } from 'astro-icon/components';
+
+interface Project {
+    title: string;
+    previewImage: string;
+    postImage: string;
+    desc: string;
+    url: string;
+    badge: string[];
+    githubRepo: string;
+    stack: string[];
+}
+
+
+const { projects } = Astro.props;
+
+async function getGithubStats(repo: string) {
+    const res = await fetch(`https://api.github.com/repos/${repo}`);
+    
+    if (!res.ok) {
+        console.error(`Error fetching GitHub stats for ${repo}: ${res.status}`);
+        return null;
+    }
+    
+    const data = await res.json();
+    console.log(`Fetching GitHub stats for ${{ stars: data.stargazers_count,
+        forks: data.forks_count}}`);
+    
+    return {
+        stars: data.stargazers_count,
+        forks: data.forks_count,
+    };
+}
+
+// Apenas as exceções onde o Devicon falha ou você prefere outro pacote
+const techExceptions: Record<string, string> = {
+  "react": "mdi:react", // nao existe no devicon, então usei mdi
+  "reactnative": "tabler:brand-react-native",
+  "tensorflow": "simple-icons:tensorflow",
+  "pytorch": "simple-icons:pytorch",
+
+};
+
+---
+
+<style>
+    /* Seus estilos originais da flip-card (mantidos intactos) */
+    .flip-stack-container {
+        perspective: 1200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 520px;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card {
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        display: flex;
+    }
+
+    .flip-card-inner {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s ease;
+        position: relative;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .flip-card-front {
+        background-color: white;
+    }
+
+    .flip-card-front img {
+        justify-self: center;
+        padding: 0.2em;
+        width: 100%;
+        height: auto;
+        border-radius: 0.9em;
+    }
+
+    .flip-card-back {
+        background-color: #00b37e;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .badge {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
+    .icon {
+        justify-self: center;
+    }
+</style>
+
+<div class="mt-12 w-full">
+    <p class="mt-3 text-center text-[15px] leading-6 text-neutral-600 dark:text-neutral-400">
+        Here are some of my recent projects, click on the <span class=" text-emerald-600 font-semibold">see more</span> button to learn more about them.
+    </p>
+    
+    <div class="overflow-hidden rounded-2xl bg-neutral-50 shadow-sm shadow-neutral-950/4 ring-1 ring-neutral-950/10 dark:bg-neutral-900 dark:ring-neutral-50/10 animate-fade-in mt-6">
+        <div class="grid grid-cols-1 divide-y divide-neutral-200 md:grid-cols-2 lg:grid-cols-3 md:divide-y-0 md:divide-x dark:divide-neutral-800">
+            {
+                await Promise.all(
+                    projects.map(async (project: Project, index: number) => {
+                        const stats = await getGithubStats(project.githubRepo);
+                        
+                        return (
+                            <article class="grid grid-rows-[auto_auto_1fr_auto_auto] gap-y-4 px-8 py-8 h-full">
+                                
+                                 <!-- 1. Preview Image Section -->
+                                <div class="w-full">
+                                    <div class="overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 aspect-video w-full">
+                                        <img
+                                            src={project.previewImage}
+                                            alt={project.title}
+                                            class="grayscale h-full w-full object-cover transition duration-500 hover:scale-105"
+                                        />
+                                    </div>
+                                </div>
+                               
+                                <!-- 2. Top Section (Badges & GitHub Stats) -->
+                                <div class="flex items-start justify-between min-h-[32px]">
+                                    
+                                    <span class="rounded-md px-2.5 py-1 text-xs font-medium text-neutral-500">
+                                        {project.badge.map((badge: string) => (
+                                            <span class="mr-1">
+                                                {badge}
+                                            </span>
+                                        ))}
+                                    </span>
+                                    
+                                    {project.githubRepo && (
+                                        <div class="flex w-fit items-center gap-2 text-neutral-500">
+                                            <!-- Badge Estrelas -->
+                                            <span class="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">
+                                                {stats?.stars} 
+                                                <Icon name="tabler:star" size="12" />
+                                            </span>
+                                            
+                                            <!-- Badge Forks -->
+                                            <span class="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">
+                                                {stats?.forks} 
+                                                <Icon name="tabler:git-fork" size="12" />
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <!-- 3. Title Section -->
+                                <div class="flex items-center min-h-[56px]">
+                                    <h3 class="text-xl font-semibold text-neutral-950 dark:text-neutral-50 line-clamp-2">
+                                        {project.title}
+                                    </h3>
+                                </div>
+
+
+                                <!-- 4. Description Section -->
+                                <div class="flex flex-col justify-start">
+                                    <p class="text-[15px] leading-6 text-neutral-600 dark:text-neutral-400 line-clamp-3">
+                                        {project.desc}
+                                    </p>
+                                </div>
+
+                                <!-- 5. Badge Icon -->
+                                    <div class=" flex rounded-md px-2.5 py-1 text-xs font-medium text-neutral-500">
+                                        {project.stack.map((stack: string) => {
+                                          // 1. Normaliza para minúsculo e remove espaços (ex: "React Native" -> "react-native")
+                                          const formattedTech = stack.toLowerCase().trim().replace(/\s+/g, '-');
+
+                                          // 2. Se for uma exceção, usa o mapeado. Se não, gera o padrão devicon-plain:tecnologia
+                                          const iconName = techExceptions[formattedTech] || `devicon-plain:${formattedTech}`;
+
+                                          return (
+                                            <Icon 
+                                              name={iconName} 
+                                              class="w-6 h-6 mr-3 text-[#00B37E]"
+                                              title={stack}
+                                            />
+                                          );
+                                        })}
+                                    </div>
+
+                                <!-- 6. Footer Section -->
+                                <div class="flex items-center justify-end pt-2">
+                                    <a
+                                        href={project.url}
+                                        target="_blank"
+                                        class="text-sm font-medium text-emerald-600 hover:text-emerald-500"
+                                    >
+                                        see more →
+                                    </a>
+                                </div>
+                            </article>
+                        );
+                    })
+                )
+            }
+        </div>
+    </div>
+</div>
