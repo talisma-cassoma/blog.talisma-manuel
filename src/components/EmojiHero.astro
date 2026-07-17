@@ -1,0 +1,135 @@
+---
+import { Icon } from "astro-icon/components";
+
+// Criamos uma lista de objetos onde cada ícone já tem seu tamanho e posição exatos definidos
+const astroIcons = [
+    {name: "devicon-plain:python", size: "36px", style: "bottom: 26%; left: 27%;"},
+    {name: "devicon-plain:typescript", size: "25px",style: "bottom: 12%; left: 25%;"},
+    { name: "mdi:github", size: "36px", style: "bottom: 16%; right: 78%;" },
+    { name: "mdi:docker", size: "36px", style: "bottom: 10%; left: 32%;" },
+    { name: "simple-icons:expo", size: "36px", style: "bottom: 28%; left: 75%;" },
+    {name: "simple-icons:cplusplus", size: "36px", style: "bottom: 10%; right: 25%;"},
+    { name: "mdi:react", size: "36px", style: "bottom: 15%; right: 15%;" },
+];
+---
+
+<style>
+    .emoji-hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        min-height: 450px;
+        overflow: hidden;
+    }
+
+    .fixed-icon {
+        position: absolute;
+        opacity: 0.8;
+        transition:
+            transform 0.2s ease,
+            filter 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    /* Efeito de hover simples para dar vida aos ícones estáticos */
+    .fixed-icon:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 4px 8px rgba(0, 179, 126, 0.4));
+        opacity: 1;
+        cursor: pointer;
+    }
+</style>
+
+<div class="emoji-hero">
+    <!-- Mapeamos os ícones aplicando o tamanho e a posição estática de cada um -->
+    <!-- {
+        astroIcons.map((icon) => (
+            <Icon
+                name={icon.name}
+                class="fixed-icon text-[#019569]"
+                style={`${icon.style} width: ${icon.size}; height: ${icon.size};`}
+            />
+        ))
+    } -->
+
+    <div
+        class="flex w-full h-auto justify-center items-center py-6 z-10 relative"
+    >
+        <!-- SVG DO ROSTO CENTRAL -->
+        <svg
+            viewBox="0 0 200 200"
+            class="w-80 h-80 text-[#00B37E]"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <style>
+                @keyframes olhar {
+                    0%,
+                    20%,
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                    35%,
+                    50% {
+                        transform: translate(6px, -5px);
+                    }
+                    65%,
+                    80% {
+                        transform: translate(0px, 8px);
+                    }
+                }
+                @keyframes piscar {
+                    0%,
+                    90%,
+                    100% {
+                        transform: scaleY(1);
+                    }
+                    95% {
+                        transform: scaleY(0.08);
+                    }
+                }
+                .olhar {
+                    animation: olhar 8s ease-in-out infinite;
+                }
+                .piscar {
+                    animation: piscar 4s ease-in-out infinite;
+                    transform-box: fill-box;
+                    transform-origin: center;
+                }
+            </style>
+            <defs>
+                <radialGradient id="face">
+                    <stop offset="0%" stop-color="currentColor"></stop>
+                    <stop
+                        offset="100%"
+                        stop-color="currentColor"
+                        stop-opacity="0"></stop>
+                </radialGradient>
+            </defs>
+            <circle cx="100" cy="100" r="90" fill="url(#face)"></circle>
+            <g
+                fill="none"
+                stroke="white"
+                stroke-width="20"
+                stroke-linecap="round"
+            >
+                <g transform="translate(75 85)"
+                    ><g class="olhar"
+                        ><g class="piscar"
+                            ><line x1="0" y1="-10" x2="0" y2="6"></line></g
+                        ></g
+                    ></g
+                >
+                <g transform="translate(125 85)"
+                    ><g class="olhar"
+                        ><g class="piscar"
+                            ><line x1="0" y1="-10" x2="0" y2="6"></line></g
+                        ></g
+                    ></g
+                >
+            </g>
+        </svg>
+    </div>
+</div>
