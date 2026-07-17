@@ -5,7 +5,6 @@ import TopProjectCards from "@/components/TopProjectCards.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import createSlug from "@/lib/createSlug";
-import ThemeToggle from "@/components/ThemeToggle.astro";
 import EmojiHero from "@/components/EmojiHero.astro";
 
 const posts = (await getCollection("blog")).sort(
@@ -48,37 +47,46 @@ const projects = [
 
 <BaseLayout sideBarActiveItemID="home">
   <!-- <div class="grid gap-6 w-full box-border overflow-hidden"> -->
-  <div class="pb-12 mt-5 h-screen">
-    <div class="flex justify-between">
-      <div class="text-xl py-1">Hey there 👋</div>
-      <ThemeToggle />
-    </div>
-    <div class="text-3xl font-bold">I'm Talisma Manuel</div>
-    <div class="text-5xl py-3 font-bold text-emerald-600">Embedded Software Engineer</div>
-    <div class="py-2">
-      <text class="text-lg">
-        Welcome to my personal space! I'm a developer passionate about
-        programming, electronics, and embedded systems. Here, I share my daily
-        learnings, research, and hands-on projects.
-      </text>
-    </div>
-   <EmojiHero class="my-auto" />
-    <div class="my-2 flex gap-8 justify-center">
-      <a href="/blog" class="w-[12rem] h-[2rem] btn bg-[--color-green-200] border-2  text-white">
+  <div class="grid pb-12 mt-5 h-screen">
+    <p class="flex text-xl py-1 justify-center">Hey there 👋</p>
+    <p class="flex text-3xl font-bold justify-center">I'm Talisma Manuel</p>
+    <p class="flex text-5xl py-3 font-bold justify-center text-emerald-600">
+      Embedded Software Engineer
+    </p>
+
+    <text class="text-lg py-2 text-center">
+      Welcome to my personal space! I'm a developer passionate about
+      programming, electronics, and embedded systems. Here, I share my daily
+      learnings, research, and hands-on projects.
+    </text>
+
+    <EmojiHero class="" />
+    <div class="my-2 flex gap-8 justify-center py-[1rem] rounded-20">
+      <a
+        href="/blog"
+        class="w-[12rem] h-[2rem] btn bg-[--color-green-200] border-2 text-white hover:bg-emerald-500"
+      >
         View Blogs
         <Icon name="tabler:arrow-narrow-right" class="w-5 h-5" />
       </a>
       <a
-        class="w-[12rem] h-[2rem] border-2 border-[--color-green-200] text-[--color-green-200] btn hover:bg-[--color-green-200] hover:text-white"
+        class="flex justify-center items-center w-[12rem] min-h-[2rem] rounded-md gap-[0.5rem] p-y-[1rem] text-center hover:text-emerald-500"
         href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
         target="_blank"
       >
         Let's connect!
-         <Icon name="mdi:linkedin" class="w-5 h-5" />
-        </a
+        <Icon name="mdi:linkedin" class="w-5 h-5" />
+      </a>
+      <a
+        href="/blog"
+        class="flex justify-center items-center w-[12rem] min-h-[2rem] rounded-md gap-[0.5rem] p-y-[1rem] text-center hover:text-emerald-500"
+        href="/cv"
+        target="_self"
       >
+        check my cv
+        <Icon name="tabler:arrow-narrow-down" class="w-5 h-5" />
+      </a>
     </div>
-    
   </div>
   <section class="grid my-24 w-full">
     <div class="flex gap-1 w-auto justify-center">
@@ -361,45 +369,4 @@ const projects = [
       >
     </div>
   </div>
-
-  <div class="flex items-center gap-2 text-3xl w-fit font-bold mb-5 mt-12">
-    <p class="flex justify-center gap-1 text-3xl w-full font-bold mb-2">
-      Latest from blog
-    </p>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="28px"
-      viewBox="0 -960 960 960"
-      width="28px"
-      fill="#00B37E"
-    >
-      <path
-        d="m580-512-60-34v-68l60-34 60 34v68l-60 34Zm0 92 140-80v-160l-140-80-140 80v160l140 80Zm-72 220h224q-7 26-24 42t-44 20L228-85q-33 5-59.5-15.5T138-154L85-591q-4-33 16-59t53-30l46-6v80l-36 5 54 437 290-36Zm-148-80q-33 0-56.5-23.5T280-360v-440q0-33 23.5-56.5T360-880h440q33 0 56.5 23.5T880-800v440q0 33-23.5 56.5T800-280H360Zm0-80h440v-440H360v440Zm220-220ZM218-164Z"
-      ></path>
-    </svg>
-  </div>
-  <!-- </div> -->
-  {
-    last_posts.map((post) => {
-      const { title, heroImage, description, badge } = post.data;
-
-      return (
-        <>
-          <HorizontalCard
-            title={title}
-            previewImage={(heroImage ?? "").replace(
-              /_thumb\.webp$/,
-              "_preview.webp",
-            )}
-            postImage={heroImage}
-            desc={description}
-            url={"/blog/" + createSlug(title, post.slug)}
-            target="_self"
-            badge={badge}
-          />
-          <div class="divider my-0" />
-        </>
-      );
-    })
-  }
 </BaseLayout>
