@@ -1,0 +1,128 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+import { Icon } from "astro-icon/components";
+
+interface Project {
+    title: string;
+    previewImage: string;
+    postImage: string;
+    desc: string;
+    url: string;
+    badge: string[];
+    githubRepo: string;
+    stack: string[];
+    icon?: string;
+}
+
+
+const projects: Project[] = [
+    {
+        title: "PCB Defects Recognition",
+        previewImage: "/pcb_defects_recognition_proj_thumb.webp",
+        postImage: "/pcb_defects_recognition_proj_thumb.webp",
+        desc: "A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards using computer vision and deep learning.",
+        url: "https://github.com/talisma-cassoma/pcb-components-detection-recognition",
+        githubRepo: "talisma-cassoma/pcb-components-detection-recognition",
+        badge: ["Computer Vision", "Deep Learning"],
+        stack: ["devicon-plain:python", "devicon-plain:opencv", "simple-icons:pytorch", "simple-icons:tensorflow"],
+        icon: "mdi:led-on",
+    },
+    {
+        title: "AI Plant Assistant",
+        previewImage: "/plant_disease_detection_proj_thumb.webp",
+        postImage: "/plant_disease_detection_proj_thumb.webp",
+        desc: "From training to automated deployment, an end-to-end strategy for training and deploying plant disease detection AI models.",
+        url: "/blog/building-my-ai-plant-assistant-an-e2e-journey",
+        githubRepo: "talisma-cassoma/ai-plant-assistant",
+        badge: ["Mobile", "Machine Learning"],
+        stack: ["devicon-plain:python", "devicon-plain:opencv", "tabler:brand-react-native"],
+        icon: "tabler:plant",
+    },
+    {
+        title: "Underwater Drone Vision System",
+        previewImage: "/doceanlab_proj_thumb.webp",
+        postImage: "/doceanlab_proj_thumb.webp",
+        desc: "DOceanLab is an underwater drone for research purposes; it films and recognizes marine species using deep learning.",
+        url: "https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab",
+        badge: ["Mechanical", "Computer Vision"],
+        githubRepo: "talisma-cassoma/UnderWaterDrone-D-OceanLab",
+        icon: "tabler:drone",
+        stack: ["devicon-plain:python"],
+    },
+];
+
+async function getGithubStats(repo: string) {
+    const res = await fetch(`https://api.github.com/repos/${repo}`);
+
+    if (!res.ok) {
+        console.error(`Error fetching GitHub stats for ${repo}: ${res.status}`);
+        return null;
+    }
+
+    const data = await res.json();
+    console.log(
+        `GitHub stats for ${repo}: ${data.stargazers_count} stars, ${data.forks_count} forks`,
+    );
+
+    return {
+        stars: data.stargazers_count,
+        forks: data.forks_count,
+    };
+}
+
+// Apenas as exceções onde o Devicon falha ou você prefere outro pacote
+const techExceptions: Record<string, string> = {
+    react: "mdi:react", // nao existe no devicon, então usei mdi
+    reactnative: "tabler:brand-react-native",
+    tensorflow: "simple-icons:tensorflow",
+    pytorch: "simple-icons:pytorch",
+};
+---
+
+<section class="grid lg:flex overflow-hidden py-16 sm:py-20 animate-hero-stagger">
+    <div class="grid mt-24 h-24 w-full lg:w-[64rem] gap-2 mr-10">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent"> Open Source Projects</p>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-tight">
+            somes of my project that I've worked on
+        </h2>
+        <p
+            class="mt-5 text-lg leading-relaxed text-foreground-muted"
+        >
+            Featured open-source projects showcasing end-to-end development
+            — from embedded 
+            firmware to full-stack applications.
+        </p>
+        <div class="mt-8 hidden lg:block">
+            <a
+                href="/projects"
+                class="w-[12rem] h-[2rem] btn bg-[--color-green-200] border-2 text-white hover:bg-emerald-500"
+            >
+                View more
+                <Icon name="tabler:arrow-narrow-right" class="w-5 h-5" />
+            </a>
+        </div>
+    </div>
+    <div class="space-y-4 lg:col-span-8" data-animate-grid="">
+        {
+            await Promise.all(
+                projects.map(async (project: Project, index: number) => {
+                    const stats = await getGithubStats(project.githubRepo);
+
+                    return (
+                        <ProjectCard
+                            index={index}
+                            title={project?.title}
+                            description={project?.desc}
+                            tags={project?.badge}
+                            icon={project?.icon}
+                            stats={stats}
+                            stack={project?.stack}
+                            previewImage={project?.previewImage}
+                        />
+                    );
+                }),
+            )
+        }
+    </div>
+</section>

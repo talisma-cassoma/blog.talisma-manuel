@@ -1,13 +1,31 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
 ---
+
 <div
-  class="w-full px-[10rem] py-[1rem]"
+  class="grid w-full px-[10rem] pt-[.4rem] fixed z-40 bg-white dark:bg-[#1d232a]"
 >
-   <ul class="flex gap-4 mx-auto justify-center">
-              <li><a class="text-base" id="home" href="/">Home</a></li>
-              <li class="flex justify-end w-full">
-                  <ThemeToggle />
-              </li>
-            </ul>
+  <ul class="flex gap-4 justify-center h-full my-1 w-full mb-3 box-border">
+      <a
+        href="/"
+        class="h-full group inline-flex justify-start items-center gap-2 font-semibold text-foreground"
+        aria-label="Launchfolio home"
+      >
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white text-sm font-bold text-accent-foreground"
+          aria-hidden="true"
+        >
+          T
+        </span>
+        <span class="hover:text-emerald-500">Talisma</span>
+      </a>
+    </li>
+    <!-- <li><a href="/" class="h-full inline-flex items-center font-semibold text-foreground" aria-label="Launchfolio home"> 
+                <span class="rounded-lg px-3 py-2 text-sm font-medium transition-colors text-foreground-muted hover:bg-accent hover:text-black">Home</span> 
+              </a></li>              -->
+    <li class="flex justify-end w-full">
+      <ThemeToggle />
+    </li>
+  </ul>
+  <!-- <div class="w-[90%] mx-auto border-t-2 border-emerald-500 border-solid"></div> -->
 </div>

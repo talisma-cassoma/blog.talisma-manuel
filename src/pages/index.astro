@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HorizontalCard from "@/components/HorizontalCard.astro";
-import TopProjectCards from "@/components/TopProjectCards.astro";
+import ProjectsCards from "@/components/ProjectsCards.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import createSlug from "@/lib/createSlug";
@@ -12,46 +12,16 @@ const posts = (await getCollection("blog")).sort(
 );
 const last_posts = posts.slice(0, 3);
 const BASE_URL = Astro.url.origin;
-const projects = [
-  {
-    title: "PCB Defects Recognition",
-    previewImage: "/pcb_defects_recognition_proj_thumb.webp",
-    postImage: "/pcb_defects_recognition_proj_thumb.webp",
-    desc: "A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards using computer vision and deep learning.",
-    url: "https://github.com/talisma-cassoma/pcb-components-detection-recognition",
-    githubRepo: "talisma-cassoma/pcb-components-detection-recognition",
-    badge: ["Computer Vision", "Deep Learning"],
-    stack: ["python", "opencv", "pytorch", "tensorflow"],
-  },
-  {
-    title: "AI Plant Assistant",
-    previewImage: "/plant_disease_detection_proj_thumb.webp",
-    postImage: "/plant_disease_detection_proj_thumb.webp",
-    desc: "From training to automated deployment, an end-to-end strategy for training and deploying plant disease detection AI models.",
-    url: "/blog/building-my-ai-plant-assistant-an-e2e-journey",
-    badge: ["Mobile", "Machine Learning"],
-    stack: ["python", "opencv", "reactnative"],
-  },
-  {
-    title: "Underwater Drone Vision System",
-    previewImage: "/doceanlab_proj_thumb.webp",
-    postImage: "/doceanlab_proj_thumb.webp",
-    desc: "DOceanLab is an underwater drone for research purposes; it films and recognizes marine species using deep learning.",
-    url: "https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab",
-    badge: ["Mechanical", "Computer Vision"],
-    githubRepo: "talisma-cassoma/UnderWaterDrone-D-OceanLab",
-    stack: ["python"],
-  },
-];
+
 ---
 
 <BaseLayout sideBarActiveItemID="home">
   <!-- <div class="grid gap-6 w-full box-border overflow-hidden"> -->
-  <div class="grid pb-12 mt-5 h-screen">
+  <div class="grid pb-12 mt-5 h-screen animate-hero-stagger">
     <p class="flex text-xl py-1 justify-center">Hey there 👋</p>
     <p class="flex text-3xl font-bold justify-center">I'm Talisma Manuel</p>
     <p class="flex text-5xl py-3 font-bold justify-center text-emerald-600">
-      Embedded Software Engineer
+      Software Engineer
     </p>
 
     <text class="text-lg py-2 text-center">
@@ -76,15 +46,6 @@ const projects = [
       >
         Let's connect!
         <Icon name="mdi:linkedin" class="w-5 h-5" />
-      </a>
-      <a
-        href="/blog"
-        class="flex justify-center items-center w-[12rem] min-h-[2rem] rounded-md gap-[0.5rem] p-y-[1rem] text-center hover:text-emerald-500"
-        href="/cv"
-        target="_self"
-      >
-        check my cv
-        <Icon name="tabler:arrow-narrow-down" class="w-5 h-5" />
       </a>
     </div>
   </div>
@@ -343,8 +304,26 @@ const projects = [
       </svg>
     </div>
 
-    <TopProjectCards projects={projects} />
+    <ProjectsCards />
   </section>
+
+  <section class="grid my-24 w-full">
+    <p
+        class="flex justify-center items-center gap-1 text-center text-3xl w-auto font-bold"
+      >
+        Check my cv
+      </p>
+      <div class="flex justify-center items-center gap-1 w-full">
+        <a
+       href="/cv"
+       class="w-[12rem] h-[2rem] btn bg-[--color-green-200] border-2 text-white hover:bg-emerald-500"
+     >
+       View cv
+       <Icon name="tabler:arrow-narrow-right" class="w-5 h-5" />
+     </a>
+      </div>
+ </section>
+
 
   <div class="flex items-center gap-2">
     <img
