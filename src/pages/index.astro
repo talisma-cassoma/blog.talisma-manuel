@@ -22,9 +22,7 @@ const BASE_URL = Astro.url.origin;
            gap-5 py-12 animate-hero-stagger
            md:min-h-screen md:py-20"
   >
-    <p class="text-lg sm:text-xl">
-      Hey there 👋
-    </p>
+    <p class="text-lg sm:text-xl">Hey there 👋</p>
 
     <h1
       class="text-center text-3xl font-bold
@@ -83,10 +81,8 @@ const BASE_URL = Astro.url.origin;
   <!-- Projects -->
   <section class="my-20 flex flex-col gap-10">
     <div class="flex items-center justify-center gap-2">
-      <h2
-        class="text-center text-2xl font-bold
-               sm:text-3xl"
-      >
+      <h2 class="text-center text-2xl font-bold
+               sm:text-3xl">
         My Personal Open Source Projects
       </h2>
 
@@ -101,23 +97,42 @@ const BASE_URL = Astro.url.origin;
     class="mx-auto my-20 flex max-w-xl flex-col items-center
            gap-6 text-center"
   >
-    <h2
-      class="text-2xl font-bold
-             sm:text-3xl"
-    >
-      Check my CV
-    </h2>
+    <h2 class="text-2xl font-bold
+             sm:text-3xl">Check my CV</h2>
 
-    <p class="leading-relaxed text-foreground-muted">
-     While my core focus is software development, I bring a diverse professional background. 
-     My experience includes providing technical assistance and serving as a Call Center Team Leader 
-     for a logistics project.I seamlessly manage these roles across four languages: Portuguese, French, 
-     Spanish, and English. 
+    <p
+      class="leading-relaxed text-foreground-muted tracking-tight md:tracking-wide"
+    >
+      While my core focus is software development, my background includes
+      technical assistance and leading logistics call center teams, delivered
+      seamlessly across four languages:
+
+      <!-- Wrapper container built to live inside a paragraph tag -->
+      <span class="inline-flex flex-wrap gap-2 mt-1.2 ml-1 align-middle ">
+        <span
+          class="rounded-3xl text-black border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          >portuguese</span
+        >
+      </span>
+      <span class="inline-flex flex-wrap gap-2 mt-1.5 ml-1 align-middle ">
+        <span
+          class="rounded-3xl text-black border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          >english</span
+        >
+        <span
+          class="rounded-3xl text-black border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          >french</span
+        >
+        <span
+          class="rounded-3xl text-black border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          >spanish</span
+        >
+      </span>
     </p>
 
     <a
       href="/cv"
-      class="btn w-full bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
+      class="btn w-full mt-8 bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
              sm:w-48"
     >
       View CV
@@ -157,5 +172,4 @@ const BASE_URL = Astro.url.origin;
       </a>
     </div>
   </section>
-
 </BaseLayout>
