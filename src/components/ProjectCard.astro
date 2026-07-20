@@ -21,26 +21,11 @@ const { index, title, description, tags, icon, stats, stack, previewImage } =
 console.log(`ProjectCard stats for ${title}:`, stats);
 ---
 
-<div class="group flex gap-4 rounded-3xl bg-[#f1efefe6] p-4 transition-all duration-500 dark:bg-[#242c35] sm:p-6"
+<div
+    class="group flex gap-4 rounded-3xl bg-[#f1efefe6] p-4 transition-all duration-500 dark:bg-[#242c35] sm:p-6"
 >
     <!-- Left column -->
     <div class="flex w-16 shrink-0 flex-col items-center gap-3">
-        <div class="flex flex-col gap-1 text-xs font-medium">
-            <span
-                class="flex items-center justify-center gap-1 rounded-md px-2 py-1"
-            >
-                {stats?.stars}
-                <Icon name="tabler:star" size={12} />
-            </span>
-
-            <span
-                class="flex items-center justify-center gap-1 rounded-md px-2 py-1"
-            >
-                {stats?.forks}
-                <Icon name="tabler:git-fork" size={12} />
-            </span>
-        </div>
-
         <div
             class="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500 text-white"
         >
@@ -67,6 +52,18 @@ console.log(`ProjectCard stats for ${title}:`, stats);
                 >
                     {description}
                 </p>
+                <!-- Tags -->
+                {
+                    tags?.length > 0 && (
+                        <ul class="mt-4 flex flex-wrap gap-2">
+                            {tags.map((tag) => (
+                                <li class="rounded-lg bg-white px-3 py-1 text-xs opacity-75 dark:bg-[#1d232a] sm:text-sm">
+                                    {tag}
+                                </li>
+                            ))}
+                        </ul>
+                    )
+                }
             </div>
 
             <!-- IMAGE -->
@@ -80,21 +77,8 @@ console.log(`ProjectCard stats for ${title}:`, stats);
                 />
             </div>
         </div>
-
-        <!-- Tags -->
-        {
-            tags?.length > 0 && (
-                <ul class="mt-4 flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                        <li class="rounded-lg bg-white px-3 py-1 text-xs opacity-75 dark:bg-[#1d232a] sm:text-sm">
-                            {tag}
-                        </li>
-                    ))}
-                </ul>
-            )
-        }
-
-        <!-- Stack -->
+        <div class="flex items-center justify-between mt-4">
+              <!-- Stack -->
         {
             stack?.length > 0 && (
                 <ul class="mt-4 flex flex-wrap gap-2">
@@ -108,5 +92,21 @@ console.log(`ProjectCard stats for ${title}:`, stats);
                 </ul>
             )
         }
+            <div class="flex gap-1 text-xs font-medium">
+                <span
+                    class="flex items-center justify-center gap-1 rounded-md px-2 py-1"
+                >
+                    {stats?.stars}
+                    <Icon name="tabler:star" size={12} />
+                </span>
+
+                <span
+                    class="flex items-center justify-center gap-1 rounded-md px-2 py-1"
+                >
+                    {stats?.forks}
+                    <Icon name="tabler:git-fork" size={12} />
+                </span>
+            </div>
+        </div>
     </div>
 </div>

@@ -21,7 +21,7 @@ const projects: Project[] = [
         title: "PCB Defects Recognition",
         previewImage: "/pcb_defects_recognition_proj_thumb.webp",
         postImage: "/pcb_defects_recognition_proj_thumb.webp",
-        desc: "A PCB Defect Recognition System designed to assist PCB manufacturing companies in automating the detection of defects in printed circuit boards using computer vision and deep learning.",
+        desc: "Automates printed circuit board defect detection using computer vision and deep learning.",
         url: "https://github.com/talisma-cassoma/pcb-components-detection-recognition",
         githubRepo: "talisma-cassoma/pcb-components-detection-recognition",
         badge: ["Computer Vision", "Deep Learning"],
@@ -32,7 +32,7 @@ const projects: Project[] = [
         title: "AI Plant Assistant",
         previewImage: "/plant_disease_detection_proj_thumb.webp",
         postImage: "/plant_disease_detection_proj_thumb.webp",
-        desc: "From training to automated deployment, an end-to-end strategy for training and deploying plant disease detection AI models.",
+        desc: "An end-to-end strategy for training and automatically deploying plant disease detection AI models.",
         url: "/blog/building-my-ai-plant-assistant-an-e2e-journey",
         githubRepo: "talisma-cassoma/ai-plant-assistant",
         badge: ["Mobile", "Machine Learning"],
@@ -43,7 +43,7 @@ const projects: Project[] = [
         title: "Underwater Drone Vision System",
         previewImage: "/doceanlab_proj_thumb.webp",
         postImage: "/doceanlab_proj_thumb.webp",
-        desc: "DOceanLab is an underwater drone for research purposes; it films and recognizes marine species using deep learning.",
+        desc: "An underwater research drone that films and recognizes marine species using deep learning.",
         url: "https://github.com/talisma-cassoma/UnderWaterDrone-D-OceanLab",
         badge: ["Mechanical", "Computer Vision"],
         githubRepo: "talisma-cassoma/UnderWaterDrone-D-OceanLab",
@@ -80,45 +80,75 @@ const techExceptions: Record<string, string> = {
 };
 ---
 
-<section class="grid lg:flex overflow-hidden py-16 sm:py-20 animate-hero-stagger">
-    <div class="grid mt-24 h-24 w-full lg:w-[64rem] gap-2 mr-10">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent"> Open Source Projects</p>
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-tight">
-            somes of my project that I've worked on
-        </h2>
+<section
+  class="flex flex-col gap-12 overflow-hidden py-12 animate-hero-stagger
+         md:py-16
+         lg:flex-row lg:gap-16 lg:py-20"
+>
+    <!-- Left Side -->
+    <div
+        class="flex flex-col w-full
+               lg:sticky lg:top-24 lg:w-80 lg:h-fit"
+    >
         <p
-            class="mt-5 text-lg leading-relaxed text-foreground-muted"
+            class="text-xs font-semibold uppercase tracking-[0.2em] text-accent
+                   sm:text-sm
+                   lg:text-center"
         >
-            Featured open-source projects showcasing end-to-end development
-            — from embedded 
-            firmware to full-stack applications.
+            Open Source Projects
         </p>
-        <div class="mt-8 hidden lg:block">
+
+        <h2
+            class="mt-4 text-3xl font-bold tracking-tight leading-tight
+                   sm:text-4xl
+                   lg:text-center lg:text-5xl"
+        >
+            Some of my projects that I've worked on
+        </h2>
+
+        <p
+            class="mt-6 text-base leading-relaxed text-foreground-muted
+                   sm:text-lg
+                   lg:text-center"
+        >
+            Featured open-source projects showcasing end-to-end development —
+            from embedded firmware to full-stack applications.
+        </p>
+
+        <div class="flex flex-col mt-8 justify-center">
             <a
                 href="/projects"
-                class="w-[12rem] h-[2rem] btn bg-[--color-green-200] border-2 text-white hover:bg-emerald-500"
+                class="btn w-full bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
+                       sm:w-56
+                       lg:mx-auto"
             >
                 View more
-                <Icon name="tabler:arrow-narrow-right" class="w-5 h-5" />
+
+                <Icon
+                    name="tabler:arrow-narrow-right"
+                    class="w-5 h-5"
+                />
             </a>
         </div>
     </div>
-    <div class="space-y-4 lg:col-span-8" data-animate-grid="">
+
+    <!-- Cards -->
+    <div class="flex flex-col flex-1 gap-6 md:gap-8">
         {
             await Promise.all(
-                projects.map(async (project: Project, index: number) => {
+                projects.map(async (project, index) => {
                     const stats = await getGithubStats(project.githubRepo);
 
                     return (
                         <ProjectCard
                             index={index}
-                            title={project?.title}
-                            description={project?.desc}
-                            tags={project?.badge}
-                            icon={project?.icon}
+                            title={project.title}
+                            description={project.desc}
+                            tags={project.badge}
+                            icon={project.icon}
                             stats={stats}
-                            stack={project?.stack}
-                            previewImage={project?.previewImage}
+                            stack={project.stack}
+                            previewImage={project.previewImage}
                         />
                     );
                 }),
