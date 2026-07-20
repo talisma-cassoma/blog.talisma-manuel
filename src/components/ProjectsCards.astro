@@ -87,13 +87,13 @@ const techExceptions: Record<string, string> = {
 >
     <!-- Left Side -->
     <div
-        class="flex flex-col w-full
+        class="flex flex-col w-full justify-center
                lg:sticky lg:top-24 lg:w-80 lg:h-fit"
     >
         <p
             class="text-xs font-semibold uppercase tracking-[0.2em] text-accent
                    sm:text-sm
-                   lg:text-center"
+                   text-center"
         >
             Open Source Projects
         </p>
@@ -101,7 +101,7 @@ const techExceptions: Record<string, string> = {
         <h2
             class="mt-4 text-3xl font-bold tracking-tight leading-tight
                    sm:text-4xl
-                   lg:text-center lg:text-5xl"
+                   text-center lg:text-5xl"
         >
             Some of my projects that I've worked on
         </h2>
@@ -115,14 +115,14 @@ const techExceptions: Record<string, string> = {
             from embedded firmware to full-stack applications.
         </p>
 
-        <div class="flex flex-col mt-8 justify-center">
+        <div class="flex flex-col mt-8 justify-center items-center">
             <a
                 href="/projects"
-                class="btn w-full bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
-                       sm:w-56
+                class="btn w-full flex items-center bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
+                       max-w-56
                        lg:mx-auto"
             >
-                View more
+               <p>View more</p>
 
                 <Icon
                     name="tabler:arrow-narrow-right"
