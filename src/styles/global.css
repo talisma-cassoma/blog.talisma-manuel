@@ -51,3 +51,217 @@ html * {
       background-color:  var(--color-green-200);
     }
   }
+
+
+  /* Position: Top (default) */
+  [data-tooltip-position="top"] .tooltip-bubble {
+    bottom: calc(100% + 8px);
+    top: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) scale(0.96);
+  }
+  [data-tooltip-position="top"] .tooltip-bubble.visible {
+    transform: translateX(-50%) scale(1);
+  }
+
+  /* Position: Bottom */
+  [data-tooltip-position="bottom"] .tooltip-bubble {
+    top: calc(100% + 8px);
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) scale(0.96);
+  }
+  [data-tooltip-position="bottom"] .tooltip-bubble.visible {
+    transform: translateX(-50%) scale(1);
+  }
+
+  /* Position: Left */
+  [data-tooltip-position="left"] .tooltip-bubble {
+    right: calc(100% + 8px);
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%) scale(0.96);
+  }
+  [data-tooltip-position="left"] .tooltip-bubble.visible {
+    transform: translateY(-50%) scale(1);
+  }
+
+  /* Position: Right */
+  [data-tooltip-position="right"] .tooltip-bubble {
+    left: calc(100% + 8px);
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%) scale(0.96);
+  }
+  [data-tooltip-position="right"] .tooltip-bubble.visible {
+    transform: translateY(-50%) scale(1);
+  }
+
+  /* Visible state */
+  .tooltip-bubble.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+/* -------------------------------------------------------------------------
+   Hero entrance & scroll-reveal animations
+   Outside every @layer so these rules are unlayered CSS — highest cascade
+   precedence — and never overridden by Tailwind-generated utilities.
+   Explicit cubic-bezier values replace var() references to guarantee the
+   transition shorthand is always valid.
+   ------------------------------------------------------------------------- */
+
+/* Spring curve approximating Framer Motion's spring(stiffness:100, damping:15).
+   Pronounced overshoot gives elements a "settle" feel on entrance.
+   Initial opacity is 0.01 (not 0) so the LCP element registers as a paint
+   candidate; the value is imperceptible to humans but visible to the
+   browser's LCP observer. */
+@keyframes hero-slide-up {
+  from {
+    opacity: 0.01;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-slide-up {
+  animation: hero-slide-up 1s cubic-bezier(0.22, 1.6, 0.36, 1) both;
+}
+
+/* Stagger direct children of a hero container. Each child springs in 90ms
+   behind the previous — used on the Hero content column to cascade
+   badge → title → description → actions. */
+.animate-hero-stagger > * {
+  animation: hero-slide-up 1s cubic-bezier(0.22, 1.6, 0.36, 1) both;
+}
+.animate-hero-stagger > *:nth-child(1)   { animation-delay: 0ms;   }
+.animate-hero-stagger > *:nth-child(2)   { animation-delay: 90ms;  }
+.animate-hero-stagger > *:nth-child(3)   { animation-delay: 180ms; }
+.animate-hero-stagger > *:nth-child(4)   { animation-delay: 270ms; }
+.animate-hero-stagger > *:nth-child(5)   { animation-delay: 360ms; }
+.animate-hero-stagger > *:nth-child(n+6) { animation-delay: 450ms; }
+
+/* Floating header drop-in: lands from above as the hero rises from below.
+   The translate values mirror the auto-hide hidden state so the entrance
+   plays cleanly with the existing transition system. */
+@keyframes header-drop-in {
+  from {
+    translate: -50% calc(-100% - 1.5rem);
+    opacity: 0;
+  }
+  to {
+    translate: -50% 0;
+    opacity: 1;
+  }
+}
+
+.animate-header-drop {
+  animation: header-drop-in 0.8s cubic-bezier(0.22, 1.6, 0.36, 1) 150ms both;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(56px) scale(0.94);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.22, 1.6, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-reveal-ease="smooth"] {
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal="down"]  { transform: translateY(-56px) scale(0.94); }
+[data-reveal="left"]  { transform: translateX(56px) scale(0.94); }
+[data-reveal="right"] { transform: translateX(-56px) scale(0.94); }
+[data-reveal="scale"] { transform: scale(0.88); }
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal][data-reveal-delay="1"] { transition-delay: 100ms; }
+[data-reveal][data-reveal-delay="2"] { transition-delay: 200ms; }
+[data-reveal][data-reveal-delay="3"] { transition-delay: 300ms; }
+[data-reveal][data-reveal-delay="4"] { transition-delay: 400ms; }
+
+/* Cascading reveal for grids of cards. Each direct child stages in behind
+   the previous when the parent intersects. Stagger and travel distance are
+   tunable per-instance via custom properties. */
+[data-reveal-children] {
+  --reveal-stagger: 100ms;
+  --reveal-distance: 48px;
+}
+
+[data-reveal-children] > * {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance)) scale(0.94);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.22, 1.6, 0.36, 1);
+}
+
+[data-reveal-children].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal-children] > *:nth-child(1)    { transition-delay: calc(var(--reveal-stagger) * 0);  }
+[data-reveal-children] > *:nth-child(2)    { transition-delay: calc(var(--reveal-stagger) * 1);  }
+[data-reveal-children] > *:nth-child(3)    { transition-delay: calc(var(--reveal-stagger) * 2);  }
+[data-reveal-children] > *:nth-child(4)    { transition-delay: calc(var(--reveal-stagger) * 3);  }
+[data-reveal-children] > *:nth-child(5)    { transition-delay: calc(var(--reveal-stagger) * 4);  }
+[data-reveal-children] > *:nth-child(6)    { transition-delay: calc(var(--reveal-stagger) * 5);  }
+[data-reveal-children] > *:nth-child(7)    { transition-delay: calc(var(--reveal-stagger) * 6);  }
+[data-reveal-children] > *:nth-child(8)    { transition-delay: calc(var(--reveal-stagger) * 7);  }
+[data-reveal-children] > *:nth-child(9)    { transition-delay: calc(var(--reveal-stagger) * 8);  }
+[data-reveal-children] > *:nth-child(10)   { transition-delay: calc(var(--reveal-stagger) * 9);  }
+[data-reveal-children] > *:nth-child(11)   { transition-delay: calc(var(--reveal-stagger) * 10); }
+[data-reveal-children] > *:nth-child(12)   { transition-delay: calc(var(--reveal-stagger) * 11); }
+[data-reveal-children] > *:nth-child(n+13) { transition-delay: calc(var(--reveal-stagger) * 12); }
+
+/* Per-block reveal for long-form article bodies (single blog posts /
+   single project pages). Each direct child of the prose container —
+   paragraph, heading, list, image, blockquote, custom MDX block — is
+   given its own observer so it springs in as the reader scrolls to it. */
+[data-reveal-content] > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.22, 1.6, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal-content] > *.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-slide-up,
+  .animate-hero-stagger > *,
+  .animate-header-drop {
+    animation: none;
+  }
+
+  [data-reveal],
+  [data-reveal-children] > *,
+  [data-reveal-content] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -19,8 +19,8 @@ const BASE_URL = Astro.url.origin;
   <!-- Hero -->
   <section
     class="flex min-h-[90svh] flex-col items-center justify-center
-           gap-5 py-12 animate-hero-stagger
-           md:min-h-screen md:py-20"
+           gap-1 py-1 animate-hero-stagger
+           md:min-h-screen"
   >
     <p class="text-lg sm:text-xl">Hey there 👋</p>
 
@@ -80,7 +80,7 @@ const BASE_URL = Astro.url.origin;
   </section>
 
   <!-- Projects -->
-  <section class="my-20 flex flex-col gap-10">
+  <section class="sm:my-20 flex flex-col gap-10" data-reveal>
     <div class="flex items-center justify-center gap-2">
       <h2 class="text-center text-2xl font-bold
                sm:text-3xl">
@@ -95,8 +95,9 @@ const BASE_URL = Astro.url.origin;
 
   <!-- CV -->
   <section
-    class="mx-auto my-20 flex max-w-xl flex-col items-center
+    class="mx-auto my-20 flex max-w-xl flex-col items-center 
            gap-6 text-center"
+           data-reveal
   >
     <h2 class="text-2xl font-bold
              sm:text-3xl">Check my CV</h2>
@@ -133,10 +134,12 @@ const BASE_URL = Astro.url.origin;
 
     <a
       href="/cv"
-      class="btn w-full mt-8 bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
-             sm:w-48"
-    >
-      View CV
+         class="btn w-full flex items-center bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
+                       max-w-56
+                       lg:mx-auto"
+            >
+               <p>View CV</p>
+
       <Icon name="tabler:arrow-narrow-right" class="h-5 w-5" />
     </a>
   </section>
@@ -145,6 +148,7 @@ const BASE_URL = Astro.url.origin;
   <section
     class="my-20 flex flex-col items-center gap-8
            md:flex-row md:items-center"
+           data-reveal
   >
     <img
       src="/mobile.png"
