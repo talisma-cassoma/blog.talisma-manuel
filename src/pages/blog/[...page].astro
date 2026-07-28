@@ -6,8 +6,9 @@ import type { Page } from "astro";
 import createSlug from "../../lib/createSlug"
 
 export const getStaticPaths: import("astro").GetStaticPaths = async ({ paginate }) => {
-  const posts = await getCollection("blog");
-  posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const posts = (await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  })).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(posts, { pageSize: 10 });
 }
 
