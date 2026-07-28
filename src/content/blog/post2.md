@@ -4,6 +4,7 @@ description: "in this article we will try to rebuild Blue River machine learning
 pubDate: "March 18 2025"
 heroImage: "/bllue_river_stack_thumb.webp"
 tags: ["machine learning", "devops", "data analysis"]
+draft: false
 ---
 
 I recently came across some fascinating insights into how **Blue River**, a company specializing in **precision agriculture**, approaches **machine learning (ML)** and I was seriously impressed. They've built a highly efficient system for **training, deploying, and monitoring ML models**, all designed to **maximize performance, reproducibility, and efficiency in the field**. Let’s dive in!  

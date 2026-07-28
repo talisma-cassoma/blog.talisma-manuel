@@ -8,9 +8,9 @@ import createSlug from "@/lib/createSlug";
 import EmojiHero from "@/components/EmojiHero.astro";
 import GithubIcon from "@/components/GithubIcon.astro";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+})).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const last_posts = posts.slice(0, 3);
 const BASE_URL = Astro.url.origin;
 ---

@@ -4,6 +4,7 @@ description: "From initial training to automated deployment, discover my E2E str
 heroImage: "/plant_disease_detection_proj_thumb.webp"
 pubDate: "March 03 2025"
 tags: ["machine learning", "devops", "mobile app development", "AI", "automation"]
+draft: false
 ---
 
 Imagine being able to diagnose plant diseases instantly, right from your smartphone. That was my initial spark – to create a mobile app powered by AI that could identify plant ailments with a simple photo. The dream was clear, involving training effective models and developing a user-friendly mobile application. However, the reality of manually labeling countless images, painstakingly tweaking model parameters, and wrestling with app deployment proved far more time-consuming and complex than I initially anticipated.

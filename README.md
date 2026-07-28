@@ -46,3 +46,5 @@ specials thanks to  <a href="https://manuelernestog.github.io/">Manuel Ernesto</
 ├── package.json
 └── tsconfig.json
 ```
+
+- the draft field on the top of the posts allow to filtering them as avalaible online or not

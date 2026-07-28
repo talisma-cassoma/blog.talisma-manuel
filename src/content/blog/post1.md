@@ -5,6 +5,7 @@ pubDate: "March 09 2025"
 heroImage: "/ourmoneyapp_thumb.webp"
 badge: "fullstack"
 tags: ["api","desktop", "web app", "data analysis"]
+draft: false
 ---
 
 I'm excited to finally share a project I've been working on in my spare time: OurMoney, a personal finance tracking app designed for simplicity, efficiency, and offline functionality. Let me tell you about it!

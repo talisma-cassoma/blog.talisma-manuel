@@ -5,4 +5,5 @@ pubDate: "March 01 2025"
 heroImage: "/zendure_mobile_app_thumb.webp"
 badge: "ongoing"
 tags: ["mobile"]
+draft: true
 ---
