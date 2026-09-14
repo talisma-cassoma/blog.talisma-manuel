@@ -3,7 +3,7 @@ title: "Building My AI Plant Assistant: An E2E Journey"
 description: "From initial training to automated deployment, discover my E2E strategy for developing and deploying AI models for plant disease detection. Learn about data labeling, model optimization, and mobile app integration."
 heroImage: "/plant_disease_detection_proj_thumb.webp"
 pubDate: "March 03 2025"
-tags: ["machine learning", "devops", "mobile app development", "AI", "automation"]
+tags: ["machine learning", "devops", "mobile app", "AI", "automation"]
 draft: false
 ---
 

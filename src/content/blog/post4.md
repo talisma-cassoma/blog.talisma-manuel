@@ -1,7 +1,7 @@
 ---
 title: "Under water drone hydrodynamics"
 description: "explainig how under water drones move on the water and the physics behind it"
-heroImage: "/plant_disease_detection_proj_thumb.webp"
+heroImage: "/doceanlab_thumbnail.png"
 pubDate: "July 15 2026"
 tags: ["electronics", "mecanics"]
 draft: true
