@@ -20,7 +20,7 @@ const BASE_URL = Astro.url.origin;
 <BaseLayout sideBarActiveItemID="home" class="grid items-center">
   <!-- Hero -->
   <section
-    class="flex min-h-[90svh] flex-col items-center justify-center
+    class="flex flex-col items-center justify-center
            gap-1 py-1 animate-hero-stagger
            md:min-h-screen"
   >
@@ -82,25 +82,32 @@ const BASE_URL = Astro.url.origin;
   </section>
 
   <!-- presentation-section -->
-  <section class="sm:my-20 grid text-wrap gap-2 text-xs" data-reveal>
-    <div class="relative flex flex-row-2 gap-6">
-      <img src="/bg-thumb.png" alt="" srcset="" class="absolute z-[-10] px-6 pt-6">
-      <div class="grid lg:gap-6 lg:py-6">
-        <h2
-          class="text-left text-3xl font-bold
-                 lg:text-8xl bevan-regular"
-        >
-          Design. <br />
-          Build. <br />
-          <span class="text-emerald-500">Grow.</span>
-        </h2>
-        <p class="max-w-[14rem] lg:text-base">
-          <b>I design</b> and <b>build React JS</b> websites and apps that turn visitors into
-          customers.
-        </p>
-      </div>
-      <div class="flex flex-col relative mt-16 lg:mt-40">
-        <div class="flex pl-6 pr-10 gap-2">
+<section class="grid w-full text-wrap text-xs min-h-[90svh] items-center justify-center
+           gap-1 my-24 animate-hero-stagger
+           md:min-h-screen" data-reveal>
+  <div class="relative flex flex-row-2 gap-6 w-full">
+    <img src="/bg-thumb-light.png" alt="" class="absolute z-[-10] px-6 pt-6 dark:hidden" />
+    <img src="/bg-thumb-dark.png" alt="" class="absolute z-[-10] hidden px-6 pt-6 dark:block" />
+    
+    <!-- Updated First Div -->
+    <div class="flex flex-1 flex-col p-2 lg:gap-6 lg:py-6">
+      <h2
+        class="text-left text-3xl font-bold
+               lg:text-8xl bevan-regular"
+      >
+        Design. <br />
+        Build. <br />
+        <span class="text-emerald-500">Grow.</span>
+      </h2>
+      <p class="max-w-[14rem] lg:text-base">
+        <b>I design</b> and <b>build React JS</b> websites and apps that turn visitors into
+        customers.
+      </p>
+    </div>
+
+    <!-- Updated Second Div -->
+    <div class="grid mt-8 min-w-0 shrink-0 lg:mt-40">
+      <div class="flex pl-6 pr-10 gap-2">
           <div  class="  w-[4rem] aspect-[99/55]">
             <svg
              class="w-full h-full pointer-events-none"
@@ -356,7 +363,7 @@ const BASE_URL = Astro.url.origin;
             <a
               href="https://github.com/talisma-cassoma"
               target="_blank"
-              class="flex size-[2rem] items-center justify-center rounded-full
+              class="flex size-[1.9rem] items-center justify-center rounded-full
                bg-emerald-500"
             >
               <Icon name="mdi:github" class="h-5 w-5" />
@@ -364,7 +371,7 @@ const BASE_URL = Astro.url.origin;
             <a
               href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
               target="_blank"
-              class="flex size-[2rem] items-center justify-center rounded-full
+              class="flex size-[1.9rem] items-center justify-center rounded-full
                bg-emerald-500"
             >
               <Icon name="mdi:linkedin" class="h-5 w-5" />
@@ -372,7 +379,7 @@ const BASE_URL = Astro.url.origin;
             <a
               href="https://www.instagram.com/mr.cassoma"
               target="_blank"
-              class="flex size-[2rem] items-center justify-center rounded-full
+              class="flex size-[1.9rem] items-center justify-center rounded-full
                bg-emerald-500"
             >
               <Icon name="mdi:instagram" class="h-5 w-5" />
@@ -385,7 +392,7 @@ const BASE_URL = Astro.url.origin;
   </section>
 
   <!-- Projects -->
-  <section class="sm:my-20 flex flex-col gap-10" data-reveal>
+  <section class="flex flex-col gap-10" data-reveal>
     <div class="flex items-center justify-center gap-2">
       <h2 class="text-center text-2xl font-bold
                sm:text-3xl">
@@ -400,7 +407,7 @@ const BASE_URL = Astro.url.origin;
 
   <!-- CV -->
   <section
-    class="mx-auto my-20 flex max-w-xl flex-col items-center
+    class="mx-auto flex max-w-xl flex-col items-center
            gap-6 text-center"
     data-reveal
   >
