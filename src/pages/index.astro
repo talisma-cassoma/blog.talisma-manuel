@@ -82,34 +82,45 @@ const BASE_URL = Astro.url.origin;
   </section>
 
   <!-- presentation-section -->
-<section class="grid w-full text-wrap text-xs items-center justify-center
-           gap-1 mb-24 mt-12 animate-hero-stagger" data-reveal>
-  <div class="relative flex flex-row-2 gap-6 w-full">
-    <img src="/bg-thumb-light.png" alt="" class="absolute z-[-10] px-6 pt-6 dark:hidden" />
-    <img src="/bg-thumb-dark.png" alt="" class="absolute z-[-10] hidden px-6 pt-6 dark:block" />
-    
-    <!-- Updated First Div -->
-    <div class="flex flex-1 flex-col p-2 lg:gap-6 lg:py-6">
-      <h2
-        class="text-left text-3xl font-bold
-               lg:text-8xl bevan-regular"
-      >
-        Design. <br />
-        Build. <br />
-        <span class="text-emerald-500">Grow.</span>
-      </h2>
-      <p class="max-w-[14rem] lg:text-base">
-        <b>I design</b> and <b>build React JS</b> websites and apps that turn visitors into
-        customers.
-      </p>
-    </div>
+  <section
+    class="grid w-full text-wrap text-xs items-center justify-center
+           gap-1 mb-24 mt-12 animate-hero-stagger"
+    data-reveal
+  >
+    <div class="relative flex flex-row-2 gap-6 w-full">
+      <img
+        src="/bg-thumb-light.png"
+        alt=""
+        class="absolute z-[-10] px-6 pt-6 dark:hidden"
+      />
+      <img
+        src="/bg-thumb-dark.png"
+        alt=""
+        class="absolute z-[-10] hidden px-6 pt-6 dark:block"
+      />
 
-    <!-- Updated Second Div -->
-    <div class="grid mt-8 min-w-0 shrink-0 lg:mt-40">
-      <div class="flex pl-6 pr-10 gap-2">
-          <div  class="  w-[4rem] aspect-[99/55]">
+      <!-- Updated First Div -->
+      <div class="flex flex-1 flex-col p-2 lg:gap-6 lg:py-6">
+        <h2
+          class="text-left text-3xl font-bold
+               lg:text-8xl bevan-regular"
+        >
+          Design. <br />
+          Build. <br />
+          <span class="text-emerald-500">Grow.</span>
+        </h2>
+        <p class="max-w-[14rem] lg:text-base">
+          <b>I design</b> and <b>build React JS</b> websites and apps that turn visitors
+          into customers.
+        </p>
+      </div>
+
+      <!-- Updated Second Div -->
+      <div class="grid mt-8 min-w-0 shrink-0 lg:mt-40">
+        <div class="flex pl-6 pr-10 gap-2">
+          <div class="w-[4rem] aspect-[99/55]">
             <svg
-             class="w-full h-full pointer-events-none"
+              class="w-full h-full pointer-events-none"
               viewBox="0 0 99 55"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -157,6 +168,7 @@ const BASE_URL = Astro.url.origin;
               width="29"
               height="29"
               viewBox="0 0 29 29"
+              style="transform: rotate(-12deg);"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -179,11 +191,7 @@ const BASE_URL = Astro.url.origin;
               </g>
               <defs>
                 <clipPath id="clip0_143_80">
-                  <rect
-                    width="24"
-                    height="24"
-                    fill="white"
-                    transform="translate(4.98988) rotate(12)"></rect>
+                  <rect width="24" height="24" fill="white"></rect>
                 </clipPath>
               </defs>
             </svg>
@@ -198,6 +206,7 @@ const BASE_URL = Astro.url.origin;
               width="32"
               height="35"
               viewBox="0 0 32 35"
+              style="transform: rotate(25deg)"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -330,7 +339,7 @@ const BASE_URL = Astro.url.origin;
                 stroke="#00B37E"
                 stroke-width="2"></path>
             </svg>
-  
+
             <!-- O texto escala dinamicamente com o tamanho -->
             <div
               class="absolute inset-0 flex flex-col items-center justify-center text-center p-2"
@@ -355,7 +364,7 @@ const BASE_URL = Astro.url.origin;
                 fill="#00B37E"></path>
             </svg>
           </div>
-             <h2 class="text-xl text-center font-semibold">+212 613 363 308</h2>
+          <h2 class="text-xl text-center font-semibold">+212 613 363 308</h2>
         </div>
         <div class="flex mt-auto h-content w-full justify-center">
           <div class="flex gap-[0.7rem] text-white">
@@ -386,7 +395,6 @@ const BASE_URL = Astro.url.origin;
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
