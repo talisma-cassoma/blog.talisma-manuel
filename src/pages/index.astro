@@ -8,9 +8,11 @@ import createSlug from "@/lib/createSlug";
 import EmojiHero from "@/components/EmojiHero.astro";
 import GithubIcon from "@/components/GithubIcon.astro";
 
-const posts = (await getCollection("blog", ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
-})).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const last_posts = posts.slice(0, 3);
 const BASE_URL = Astro.url.origin;
 ---
@@ -79,6 +81,309 @@ const BASE_URL = Astro.url.origin;
     </div>
   </section>
 
+  <!-- presentation-section -->
+  <section class="sm:my-20 grid text-wrap gap-2 text-xs" data-reveal>
+    <div class="relative flex flex-row-2 gap-6">
+      <img src="/bg-thumb.png" alt="" srcset="" class="absolute z-[-10] px-6 pt-6">
+      <div class="grid lg:gap-6 lg:py-6">
+        <h2
+          class="text-left text-3xl font-bold
+                 lg:text-8xl bevan-regular"
+        >
+          Design. <br />
+          Build. <br />
+          <span class="text-emerald-500">Grow.</span>
+        </h2>
+        <p class="max-w-[14rem] lg:text-base">
+          <b>I design</b> and <b>build React JS</b> websites and apps that turn visitors into
+          customers.
+        </p>
+      </div>
+      <div class="flex flex-col relative mt-16 lg:mt-40">
+        <div class="flex pl-6 pr-10 gap-2">
+          <div  class="  w-[4rem] aspect-[99/55]">
+            <svg
+             class="w-full h-full pointer-events-none"
+              viewBox="0 0 99 55"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M98.5629 13.0643C98.917 13.8132 98.5968 14.7074 97.8479 15.0614L85.6429 20.8311C84.8939 21.1851 83.9998 20.865 83.6457 20.116C83.2917 19.3671 83.6118 18.4729 84.3608 18.1189L95.2096 12.9903L90.0811 2.14143C89.727 1.39247 90.0471 0.4983 90.7961 0.144247C91.5451 -0.209808 92.4392 0.110327 92.7933 0.859284L98.5629 13.0643ZM97.2068 13.7053L96.7012 15.1175C64.4556 3.57286 41.8861 2.71966 27.0374 9.86294C12.3182 16.944 4.70052 32.1453 2.99091 54.0611L1.49546 53.9445L6.49378e-07 53.8278C1.74928 31.4033 9.63922 14.9036 25.7369 7.1595C41.7052 -0.522386 65.2619 0.675026 97.7124 12.2931L97.2068 13.7053Z"
+                fill="#00B37E"></path>
+            </svg>
+          </div>
+
+          <div
+            style="box-shadow: 0px 4px 36px 5px rgba(0, 0, 0, 0.25);"
+            class="flex justify-center items-center size-[2.25rem] bg-white rounded-[12px]"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 13.8555C13.0355 13.8555 13.875 13.016 13.875 11.9805C13.875 10.9449 13.0355 10.1055 12 10.1055C10.9645 10.1055 10.125 10.9449 10.125 11.9805C10.125 13.016 10.9645 13.8555 12 13.8555Z"
+                fill="#00D8FF"></path>
+              <path
+                d="M12 16.2795C9.74636 16.3338 7.49839 16.03 5.34 15.3795C4.34297 15.0634 3.41305 14.5656 2.59725 13.911C2.28584 13.6875 2.02652 13.3992 1.83711 13.066C1.6477 12.7327 1.5327 12.3624 1.5 11.9805C1.5 10.7408 2.862 9.52575 5.1435 8.73075C7.35968 8.02689 9.67498 7.6855 12 7.71975C14.294 7.68803 16.5783 8.02326 18.7665 8.71275C19.7266 9.01922 20.6249 9.49301 21.42 10.1123C21.7257 10.3258 21.9808 10.6037 22.1674 10.9265C22.354 11.2493 22.4675 11.6091 22.5 11.9805C22.5 13.269 20.9775 14.5748 18.525 15.3863C16.4084 16.0158 14.2079 16.317 12 16.2795ZM12 8.61675C9.77563 8.58768 7.56077 8.91223 5.43825 9.57825C3.33825 10.311 2.397 11.313 2.397 11.9783C2.397 12.6743 3.40875 13.7685 5.63025 14.5283C7.69503 15.1478 9.84495 15.4361 12 15.3825C14.1123 15.4203 16.2179 15.1345 18.2438 14.535C20.55 13.7708 21.6 12.675 21.6 11.9805C21.562 11.7422 21.4751 11.5144 21.3447 11.3113C21.2144 11.1083 21.0434 10.9344 20.8425 10.8008C20.1313 10.2512 19.3287 9.83127 18.4718 9.56025C16.3784 8.90354 14.1937 8.58504 12 8.61675Z"
+                fill="#00D8FF"></path>
+              <path
+                d="M7.73995 21.3323C7.39008 21.3403 7.04434 21.2554 6.73795 21.0863C5.66395 20.4668 5.29195 18.6803 5.7427 16.3065C6.24025 14.035 7.10134 11.8587 8.2927 9.86176C9.41101 7.85876 10.8423 6.04741 12.5325 4.49626C13.2776 3.81759 14.1368 3.27601 15.0705 2.89651C15.4083 2.73867 15.7768 2.65686 16.1497 2.65686C16.5226 2.65686 16.8911 2.73867 17.229 2.89651C18.3457 3.54001 18.7155 5.51101 18.1942 8.04076C17.6819 10.1892 16.8432 12.2464 15.7072 14.1405C14.6283 16.1199 13.2421 17.9155 11.6002 19.4603C10.8283 20.1658 9.93245 20.7225 8.95795 21.102C8.56792 21.2472 8.15606 21.325 7.73995 21.3323ZM9.0697 10.3073C7.93337 12.2195 7.10808 14.3002 6.6247 16.4715C6.20995 18.6578 6.6082 19.9725 7.1872 20.307C7.7872 20.6543 9.2437 20.325 11.0122 18.78C12.5798 17.3003 13.903 15.5815 14.9325 13.6875C16.0207 11.8766 16.8252 9.90987 17.3182 7.85551C17.8087 5.47426 17.385 4.01626 16.7835 3.66976C16.558 3.58351 16.3171 3.54492 16.076 3.55641C15.8348 3.5679 15.5987 3.62922 15.3825 3.73651C14.5513 4.0796 13.7871 4.56656 13.125 5.17501C11.5103 6.66092 10.1431 8.39497 9.07495 10.3118L9.0697 10.3073Z"
+                fill="#00D8FF"></path>
+              <path
+                d="M16.2578 21.342C15.2415 21.342 13.9508 20.727 12.6068 19.5712C10.8872 18.0058 9.43172 16.173 8.29651 14.1435C7.11984 12.1741 6.26556 10.0293 5.76601 7.79023C5.54987 6.80505 5.50975 5.7894 5.64751 4.79023C5.6799 4.4197 5.79295 4.06075 5.97874 3.73853C6.16453 3.41631 6.41855 3.13864 6.72301 2.92498C7.83826 2.27923 9.73051 2.94298 11.6618 4.65748C13.2672 6.17412 14.6305 7.92801 15.7043 9.85798C16.8803 11.7813 17.7435 13.8792 18.2618 16.0732C18.4876 17.0945 18.5224 18.1488 18.3645 19.1827C18.3271 19.5641 18.2076 19.9328 18.0141 20.2636C17.8207 20.5944 17.558 20.8794 17.244 21.099C16.9425 21.2657 16.6022 21.3495 16.2578 21.342ZM9.07276 13.692C10.1619 15.6314 11.5522 17.3856 13.1918 18.8887C14.8785 20.34 16.2165 20.652 16.7918 20.3137C17.3918 19.965 17.8343 18.5415 17.3783 16.2382C16.8788 14.1434 16.0508 12.1408 14.925 10.305C13.9004 8.45783 12.5991 6.77838 11.0663 5.32498C9.24826 3.71098 7.77376 3.35023 7.17301 3.69823C6.98587 3.85049 6.83228 4.03984 6.72192 4.25437C6.61156 4.4689 6.54681 4.70395 6.53176 4.94473C6.41261 5.8358 6.45145 6.7409 6.64651 7.61848C7.12716 9.75971 7.94647 11.8105 9.07351 13.6935L9.07276 13.692Z"
+                fill="#00D8FF"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="flex justify-between gap-4 playwrite-us-trad">
+          <p class="w-20">Built on React Js</p>
+          <!--box-shadow: <offset-x> <offset-y> <blur-radius> <spread-radius> <color-->
+          <div
+            style="box-shadow: 0px 4px 36px 5px rgba(0, 0, 0, 0.25);"
+            class="flex justify-center items-center size-[2.25rem] bg-white rounded-[12px] rotate-12"
+          >
+            <svg
+              width="29"
+              height="29"
+              viewBox="0 0 29 29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_143_80)">
+                <path
+                  d="M4.74429 20.3946C4.96486 19.357 5.58861 18.4494 6.47833 17.8716C7.36804 17.2938 8.45085 17.0931 9.48853 17.3137L13.4011 18.1453L12.5695 22.0579C12.3489 23.0956 11.7252 24.0032 10.8354 24.581C9.94572 25.1588 8.86292 25.3594 7.82524 25.1389C6.78755 24.9183 5.87999 24.2946 5.3022 23.4048C4.72441 22.5151 4.52373 21.4323 4.74429 20.3946Z"
+                  fill="#24CB71"></path>
+                <path
+                  d="M16.7277 2.495L15.0644 10.3202L18.977 11.1518C20.0147 11.3724 21.0975 11.1717 21.9872 10.5939C22.8769 10.0161 23.5006 9.10856 23.7212 8.07088C23.9418 7.0332 23.7411 5.95039 23.1633 5.06068C22.5855 4.17096 21.6779 3.54721 20.6403 3.32664L16.7277 2.495Z"
+                  fill="#FF7237"></path>
+                <path
+                  d="M17.2814 18.9701C18.3191 19.1906 19.4019 18.9899 20.2916 18.4122C21.1813 17.8344 21.8051 16.9268 22.0256 15.8891C22.2462 14.8514 22.0455 13.7686 21.4677 12.8789C20.89 11.9892 19.9824 11.3654 18.9447 11.1449C17.907 10.9243 16.8242 11.125 15.9345 11.7028C15.0448 12.2806 14.421 13.1881 14.2005 14.2258C13.9799 15.2635 14.1806 16.3463 14.7584 17.236C15.3362 18.1257 16.2437 18.7495 17.2814 18.9701Z"
+                  fill="#00B6FF"></path>
+                <path
+                  d="M8.07083 4.74426C7.85026 5.78194 8.05095 6.86474 8.62874 7.75446C9.20653 8.64418 10.1141 9.26793 11.1518 9.48849L15.0644 10.3201L16.7277 2.49496L12.8151 1.66331C11.7774 1.44275 10.6946 1.64343 9.80487 2.22122C8.91515 2.79901 8.2914 3.70657 8.07083 4.74426Z"
+                  fill="#FF3737"></path>
+                <path
+                  d="M6.4075 12.5695C6.18693 13.6071 6.38762 14.6899 6.96541 15.5797C7.5432 16.4694 8.45076 17.0931 9.48844 17.3137L13.401 18.1453L15.0643 10.3202L11.1517 9.48851C10.1141 9.26794 9.03125 9.46863 8.14154 10.0464C7.25182 10.6242 6.62807 11.5318 6.4075 12.5695Z"
+                  fill="#874FFF"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_143_80">
+                  <rect
+                    width="24"
+                    height="24"
+                    fill="white"
+                    transform="translate(4.98988) rotate(12)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="flex px-20">
+          <div
+            style="box-shadow: 0px 4px 36px 5px rgba(0, 0, 0, 0.25);"
+            class="flex justify-center items-center size-[2.25rem] bg-white rounded-[12px] rotate-[-25deg]"
+          >
+            <svg
+              width="32"
+              height="35"
+              viewBox="0 0 32 35"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_143_71)">
+                <path
+                  d="M16.5998 27.9416C14.9687 27.4265 13.6081 25.3801 13.3403 23.5629C14.6347 24.1839 15.9267 23.9692 17.1952 23.5968C19.1532 23.0216 20.9008 22.0802 22.2084 20.4495C22.3579 20.2629 22.4781 20.0515 22.6299 19.823C23.0059 20.2128 23.2657 20.6619 23.4325 21.1647C23.8386 22.389 23.6808 23.5546 23.082 24.6616C22.8425 25.1045 22.5683 25.5283 22.3097 25.961C21.515 27.291 21.6316 28.3619 22.695 29.5025C22.7208 29.5307 22.7455 29.559 22.8062 29.628C22.0886 29.6381 21.4742 29.4522 20.9059 29.0961C20.3063 28.7203 19.8628 28.2024 19.5534 27.5619C19.4027 27.2504 19.2552 26.934 19.0689 26.6444C18.6149 25.9385 18.1049 25.7655 17.4314 26.0558C16.7405 26.3538 16.3983 27.0281 16.5659 27.7608C16.5789 27.8171 16.5866 27.875 16.5985 27.9419L16.5998 27.9416ZM7.69576 25.8717C7.69576 25.8717 10.3077 22.6403 13.7003 21.0583L12.5539 11.922C12.4705 11.4932 12.6285 11.1019 12.9442 10.9547C13.2598 10.8075 13.661 10.938 13.9361 11.2775L20.1981 18.0284C24.2161 16.1548 27.745 16.5226 27.745 16.5226C27.745 16.5226 14.6733 3.49364 14.6475 3.46727C14.2659 3.07983 13.8481 2.9106 13.4727 3.08562L6.57695 6.30117C6.20162 6.47619 6.074 6.8998 6.11433 7.44662C6.11642 7.48318 7.69576 25.8717 7.69576 25.8717Z"
+                  fill="#17191E"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_143_71">
+                  <rect
+                    width="22.1667"
+                    height="28"
+                    fill="white"
+                    transform="translate(0 9.36805) rotate(-25)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <div class="flex pl-40 pt-20">
+          <div
+            style="box-shadow: 0px 4px 36px 5px rgba(0, 0, 0, 0.25);"
+            class="flex justify-center items-center size-[2.25rem] bg-white rounded-[12px] rotate-12"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 12 22.5Z"
+                fill="black"></path>
+              <path
+                d="M18.945 19.875L9.57005 7.80005L7.80005 7.80005L7.80005 16.2L9.21755 16.2L9.21755 9.60005L17.835 20.73C18.2251 20.4675 18.585 20.19 18.945 19.8825L18.945 19.875Z"
+                fill="url(#paint0_linear_143_94)"></path>
+              <path
+                d="M14.9175 7.80005L16.3125 7.80005L16.3125 16.2L14.925 16.2L14.9175 7.80005Z"
+                fill="url(#paint1_linear_143_94)"></path>
+              <defs>
+                <linearGradient
+                  id="paint0_linear_143_94"
+                  x1="7.81917"
+                  y1="20.7582"
+                  x2="11.0367"
+                  y2="26.1248"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white"></stop>
+                  <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+                </linearGradient>
+                <linearGradient
+                  id="paint1_linear_143_94"
+                  x1="15.0379"
+                  y1="7.84692"
+                  x2="15.0379"
+                  y2="14.0509"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white"></stop>
+                  <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flex gap-2">
+        <svg
+          class="flex py-2"
+          width="24"
+          height="66"
+          viewBox="0 0 24 66"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.8274 65.8129C14.613 66.0757 15.463 65.6518 15.7257 64.8662L20.008 52.0634C20.2708 51.2777 19.8469 50.4278 19.0613 50.165C18.2757 49.9023 17.4257 50.3261 17.163 51.1118L13.3565 62.4921L1.9762 58.6856C1.19056 58.4228 0.340641 58.8467 0.0778589 59.6323C-0.184923 60.4179 0.238941 61.2679 1.02459 61.5307L13.8274 65.8129ZM14.3032 64.3904L15.6455 63.721C6.81867 46.0216 4.024 32.6789 5.73877 22.8771C7.42815 13.2204 13.5464 6.73898 23.3226 2.78075L22.7596 1.39039L22.1967 3.17097e-05C11.6775 4.25911 4.68825 11.4733 2.78365 22.3601C0.904448 33.1018 4.02927 47.1505 12.9609 65.0598L14.3032 64.3904Z"
+            fill="#00B37E"></path>
+        </svg>
+        <p class="playwrite-us-trad">My Services</p>
+      </div>
+      <div class="grid gap-4">
+        <div
+          class="grid rounded-[1rem] bg-emerald-500 px-[1.5rem] py-[1rem] gap-[10px] text-white max-w-[16rem]"
+        >
+          <h2 class="text-sm font-bold">Apps and Websites Development</h2>
+          <p>Fast, scalable websites and mobile apps</p>
+        </div>
+        <div
+          class="grid rounded-[1rem] bg-emerald-500 px-[1.5rem] py-[1rem] gap-[10px] text-white max-w-[16rem]"
+        >
+          <h2 class="text-sm font-bold">Ul/UX Design</h2>
+          <p>Clean, conversion-focused layouts that guide visitors to act</p>
+        </div>
+        <div
+          class="grid rounded-[1rem] bg-emerald-500 px-[1.5rem] py-[1rem] gap-[10px] text-white max-w-[16rem]"
+        >
+          <h2 class="text-sm font-bold">Website Care & SEO</h2>
+          <p>Ongoing support, speed & search optimization</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="grid justify-center mt-12 w-fit">
+          <div
+            class="relative inline-flex items-center justify-center w-[16rem] aspect-[183/95]"
+          >
+            <!-- SVG responsivo que preenche 100% do container mantendo o formato -->
+            <svg
+              class="w-full h-full pointer-events-none"
+              viewBox="0 0 183 95"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M99.6699 0.5C121.523 0.500041 141.284 5.78519 155.564 14.3047C169.855 22.8304 178.578 34.5389 178.578 47.375C178.578 60.211 169.855 71.9187 155.564 80.4443C141.284 88.9638 121.523 94.25 99.6699 94.25C77.8163 94.25 58.0557 88.9638 43.7754 80.4443C29.4848 71.9186 20.7608 60.2111 20.7607 47.375C20.7607 34.5389 29.4847 22.8304 43.7754 14.3047C58.0557 5.78527 77.8165 0.5 99.6699 0.5Z"
+                stroke="#00B37E"></path>
+              <path
+                d="M105.225 1.5C126.507 1.50006 145.7 6.07667 159.517 13.4023C173.402 20.7634 181.5 30.6754 181.5 41.2334C181.5 51.7915 173.402 61.7034 159.517 69.0645C145.7 76.3902 126.507 80.9667 105.225 80.9668C83.9435 80.9668 64.7503 76.3902 50.9324 69.0645C37.048 61.7034 28.95 51.7914 28.95 41.2334C28.9501 30.6754 37.048 20.7634 50.9324 13.4023C64.7503 6.07658 83.9435 1.5 105.225 1.5Z"
+                stroke="#00B37E"
+                stroke-width="3"></path>
+              <path
+                d="M91.5 1C116.651 1 139.372 5.88979 155.768 13.75C172.236 21.6449 182 32.3572 182 43.8652C182 55.3733 172.236 66.0865 155.768 73.9814C139.372 81.8416 116.651 86.7314 91.5 86.7314C66.349 86.7314 43.6283 81.8416 27.2324 73.9814C10.7641 66.0865 1 55.3733 1 43.8652C1.00018 32.3572 10.7643 21.6449 27.2324 13.75C43.6283 5.88979 66.349 1 91.5 1Z"
+                stroke="#00B37E"
+                stroke-width="2"></path>
+            </svg>
+  
+            <!-- O texto escala dinamicamente com o tamanho -->
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center text-center p-2"
+            >
+              <p class="text-xs sm:text-sm leading-none">Available for</p>
+              <h2
+                class="text-sm font-semibold tracking-tight sm:text-base leading-tight whitespace-nowrap"
+              >
+                NEW PROJECTS
+              </h2>
+            </div>
+            <svg
+              width="40"
+              height="109"
+              viewBox="0 0 40 109"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="invisible flex lg:visible mt-16"
+            >
+              <path
+                d="M10.1528 108.838C9.32982 108.933 8.58597 108.342 8.49139 107.519L6.95013 94.1077C6.85555 93.2847 7.44605 92.5409 8.26907 92.4463C9.09208 92.3517 9.83593 92.9422 9.93051 93.7652L11.3005 105.687L23.2221 104.317C24.0451 104.222 24.7889 104.813 24.8835 105.636C24.9781 106.459 24.3876 107.203 23.5646 107.297L10.1528 108.838ZM9.98158 107.348L8.80676 106.416C30.7957 78.7166 38.9377 57.0287 36.5742 40.3066C34.23 23.7218 21.4424 11.4445 -3.54455e-08 2.78157L0.561887 1.39078L1.12377 -8.89895e-07C23.0055 8.84036 36.9825 21.7597 39.5446 39.8868C42.0873 57.8765 33.2772 80.4157 11.1564 108.281L9.98158 107.348Z"
+                fill="#00B37E"></path>
+            </svg>
+          </div>
+             <h2 class="text-xl text-center font-semibold">+212 613 363 308</h2>
+        </div>
+        <div class="flex mt-auto h-content w-full justify-center">
+          <div class="flex gap-[0.7rem] text-white">
+            <a
+              href="https://github.com/talisma-cassoma"
+              target="_blank"
+              class="flex size-[2rem] items-center justify-center rounded-full
+               bg-emerald-500"
+            >
+              <Icon name="mdi:github" class="h-5 w-5" />
+            </a>
+            <a
+              href="http://linkedin.com/in/talisma-manuel-88ba571b2/"
+              target="_blank"
+              class="flex size-[2rem] items-center justify-center rounded-full
+               bg-emerald-500"
+            >
+              <Icon name="mdi:linkedin" class="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.instagram.com/mr.cassoma"
+              target="_blank"
+              class="flex size-[2rem] items-center justify-center rounded-full
+               bg-emerald-500"
+            >
+              <Icon name="mdi:instagram" class="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Projects -->
   <section class="sm:my-20 flex flex-col gap-10" data-reveal>
     <div class="flex items-center justify-center gap-2">
@@ -95,9 +400,9 @@ const BASE_URL = Astro.url.origin;
 
   <!-- CV -->
   <section
-    class="mx-auto my-20 flex max-w-xl flex-col items-center 
+    class="mx-auto my-20 flex max-w-xl flex-col items-center
            gap-6 text-center"
-           data-reveal
+    data-reveal
   >
     <h2 class="text-2xl font-bold
              sm:text-3xl">Check my CV</h2>
@@ -110,23 +415,23 @@ const BASE_URL = Astro.url.origin;
       seamlessly across four languages:
 
       <!-- Wrapper container built to live inside a paragraph tag -->
-      <span class="inline-flex flex-wrap gap-2 mt-1.2 ml-1 align-middle ">
+      <span class="inline-flex flex-wrap gap-2 mt-1.2 ml-1 align-middle">
         <span
-          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm"
           >portuguese</span
         >
       </span>
-      <span class="inline-flex flex-wrap gap-2 mt-1.5 ml-1 align-middle ">
+      <span class="inline-flex flex-wrap gap-2 mt-1.5 ml-1 align-middle">
         <span
-          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm"
           >english</span
         >
         <span
-          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm"
           >french</span
         >
         <span
-          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm "
+          class="rounded-3xl border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white px-3 py-1 text-xs opacity-75 sm:text-sm"
           >spanish</span
         >
       </span>
@@ -134,11 +439,11 @@ const BASE_URL = Astro.url.origin;
 
     <a
       href="/cv"
-         class="btn w-full flex items-center bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
+      class="btn w-full flex items-center bg-[--color-green-200] border-2 text-white hover:bg-emerald-500
                        max-w-56
                        lg:mx-auto"
-            >
-               <p>View CV</p>
+    >
+      <p>View CV</p>
 
       <Icon name="tabler:arrow-narrow-right" class="h-5 w-5" />
     </a>
@@ -148,7 +453,7 @@ const BASE_URL = Astro.url.origin;
   <section
     class="my-20 flex flex-col items-center gap-8
            md:flex-row md:items-center"
-           data-reveal
+    data-reveal
   >
     <img
       src="/mobile.png"

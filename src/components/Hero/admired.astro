@@ -44,17 +44,6 @@ const astroIcons = [
 </style>
 
 <div class="emoji-hero">
-    <!-- Mapeamos os ícones aplicando o tamanho e a posição estática de cada um -->
-    <!-- {
-        astroIcons.map((icon) => (
-            <Icon
-                name={icon.name}
-                class="fixed-icon text-[#019569]"
-                style={`${icon.style} width: ${icon.size}; height: ${icon.size};`}
-            />
-        ))
-    } -->
-
     <div
         class="flex w-full h-auto justify-center items-center py-6 z-10 relative"
     >
@@ -114,9 +103,15 @@ const astroIcons = [
             <g
                 fill="none"
                 stroke="white"
-                stroke-width="20"
+                stroke-width="20"   
                 stroke-linecap="round"
             >
+             <!-- // vai para <g
+                fill="none"
+                stroke="white"
+                stroke-width="40"
+                stroke-linecap="round"
+            > -->
                 <g transform="translate(75 85)"
                     ><g class="olhar"
                         ><g class="piscar"
@@ -134,20 +129,20 @@ const astroIcons = [
             </g>
 
             <!-- BOCA (Segue o movimento dos olhos) -->
-              <g
-                class="olhar rir"
+            <g class="olhar"
+            fill="none"
+                stroke="white"
+                stroke-width="20"
+                stroke-linecap="round"
+            >
+              <!-- // vai para <g
                 fill="none"
                 stroke="white"
                 stroke-width="40"
                 stroke-linecap="round"
-            >
-                <!-- <path 
-                    d="M 88 110 Q 105 120 115 110" 
-                    fill="none" 
-                    stroke="#00B37E" 
-                    stroke-width="3" 
-                    stroke-linecap="round" 
-                /> -->
+            > -->
+                <line x1="90" y1="140" x2="110" y2="140" /> 
+                <!-- vai para  <line x1="100" y1="140" x2="100" y2="160" /> -->
             </g>
         </svg>
     </div>

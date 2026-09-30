@@ -35,6 +35,16 @@ const currentPath = Astro.url.pathname;
          data-reveal fades) and produced a visible post-fade "aftershake" on
          mobile. Each navigation now does a normal page load, so animations
          run cleanly from frame 0 every time. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="flex justify-center">
     <div
@@ -51,8 +61,7 @@ const currentPath = Astro.url.pathname;
         <Footer />
       </div>
     </div>
-  </body>
-  <script is:inline>
+  </body><script is:inline>
     (function () {
       const THRESHOLD = 400;
       const CIRCUMFERENCE = 131.95;
