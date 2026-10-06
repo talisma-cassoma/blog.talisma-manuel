@@ -490,18 +490,21 @@ const BASE_URL = Astro.url.origin;
         <article class="flex w-full justify-center gap-2 max-w-[650px] animate-hero-stagger" data-reveal>
           <IphoneMockup />
           <div
-            class="flex flex-col flex-1 items-center gap-2 text-center min-w-[134px] md:gap-10"
+            class="flex flex-col flex-1 items-center justify-center py-auto gap-2 text-center min-w-[134px] md:gap-10"
           >
             <h2 class="text-xs font-bold sm:text-3xl md:text-4xl">
               MyKIDS: Offline Gamified Learning App
             </h2>
-            <p
-              class="max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg"
-            >
-              MyKids is an offline-first mobile app designed to expand children's vocabulary through 
-              gamified learning. Modeled directly on Duolingo’s interface design, animations, audio/voice 
-              feedback, and exercise mechanics, the application includes a custom admin dashboard for dynamic 
-              lesson creation and relies on local data storage for seamless, internet-free operation.
+            <!-- Shown ONLY on large screens (lg and above) -->
+            <p class="hidden lg:block max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
+  MyKids is an offline-first mobile app designed to expand children's vocabulary through 
+  gamified learning. Modeled directly on Duolingo’s interface design, animations, audio/voice 
+  feedback, and exercise mechanics, the application includes a custom admin dashboard for dynamic 
+  lesson creation and relies on local data storage for seamless, internet-free operation.
+            </p>
+            <!-- Shown ONLY on screens smaller than large (< lg) -->
+            <p class="lg:hidden max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
+                An offline, Duolingo-inspired app for children that expands vocabulary through gamified learning and custom lessons.
             </p>
             <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
           </div>
@@ -535,7 +538,7 @@ const BASE_URL = Astro.url.origin;
                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                    <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="3"/>
                  </svg>
-                 <p class="flex-1 text-left">provides a flexible bid-based ride-hailing experience optimized for regional infrastructure</p>
+                 <p class="flex-1 text-left">Flexible, bid-based regional ride-hailing</p>
                 </li>
               </ul>
               <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
