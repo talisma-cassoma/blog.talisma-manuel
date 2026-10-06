@@ -7,6 +7,9 @@ import { getCollection } from "astro:content";
 import createSlug from "@/lib/createSlug";
 import EmojiHero from "@/components/EmojiHero.astro";
 import GithubIcon from "@/components/GithubIcon.astro";
+import MessageCard from "@/components/MessageCard.astro";
+import IphoneMockup from "@/components/IphoneMockup.astro";
+import EcotripThumb from "@/components/EcotripThumb.astro";
 
 const posts = (
   await getCollection("blog", ({ data }) => {
@@ -19,10 +22,8 @@ const BASE_URL = Astro.url.origin;
 
 <BaseLayout sideBarActiveItemID="home" class="grid items-center">
   <!-- Hero -->
-  <section
-    class="flex flex-col items-center justify-center
-           gap-1 py-1 animate-hero-stagger"
-  >
+  <section class="flex flex-col items-center justify-center
+           gap-1 py-1 animate-hero-stagger" >
     <p class="text-lg sm:text-xl">Hey there 👋</p>
 
     <h1
@@ -393,6 +394,155 @@ const BASE_URL = Astro.url.origin;
             </a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- witness-section -->
+  <section
+    class="grid w-full items-center justify-center gap-1 mb-24 mt-12 animate-hero-stagger"
+    data-reveal
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-2.5 px-6 text-center">
+      <h1 class="text-2xl font-bold sm:text-4xl md:text-5xl">
+        What people say about my work
+      </h1>
+      <p
+        class="max-w-2xl text-justify text-base leading-relaxed text-foreground-muted sm:text-lg"
+      >
+        Over the years, I’ve designed, developed, and delivered numerous web and
+        mobile applications ranging from custom cross-platform tools to
+        full-stack platforms. My focus is always on translating complex
+        requirements into clean UI, robust code, and scalable user experiences.
+        Here is what partners and clients have to say about working together.
+      </p>
+    </div>
+
+    <!-- Testimonial Radar Container -->
+    <div
+      class="flex flex-col w-full min-h-[635px] items-center justify-center bg-[url('/radar-bg.svg')] bg-contain bg-center bg-no-repeat"
+    >
+      <!-- Testimonial Card Bubble -->
+      <MessageCard
+        image="https://media.licdn.com/dms/image/v2/D4E03AQGhI47bM43gFg/profile-displayphoto-scale_400_400/B4EZ7R3rTmJYAk-/0/1781637497086?e=1792627200&v=beta&t=-ygDPr8GRnRtsiRkBQRn4MztDpe-Ssv6fnzh1xZI8to"
+        name="Anacelma Paulino"
+        profession="CEO of KUKALA"
+        message="Talismã designed and developed our e-commerce platform flawlessly. He delivered an elegant store that made online shopping seamless for our healthcare and cosmetic customers."
+      />
+      <MessageCard
+        image="https://media.licdn.com/dms/image/v2/D4E22AQGrXcFSzrKJTA/feedshare-shrink_480/B4EaAGvjHDIkAg-/0/1786819523254?e=1792627200&v=beta&t=snIdPJc8TCdGuB1BsVj-NHSN5TvGzCDRwovmHV_4jno"
+        name="Nicolas BOHOME"
+        profession="Senior Manager at HCLTech "
+        message="Talismã built our public website and custom ERP with precision. He blended intuitive design with robust functionality, streamlining our operations and making a vital impact on VIDDAS’s mission."
+        class="ml-24"
+      />
+      <MessageCard
+        image="https://media.licdn.com/dms/image/v2/D4D03AQFq5y9qZY3cvA/profile-displayphoto-scale_400_400/B4DZ6uoQKgKkAg-/0/1781046249595?e=1792627200&v=beta&t=IX4KBN5hMA4CeUUOcSj_zyInfxcop_7XI4t8INgd0bA"
+        name="Alejandro Medang Esono"
+        profession="BPO Industry at INFLUX"
+        message="Talismã built our ride-hailing app with great reliability. He created a smooth user experience and flexible features tailored specifically for Equatorial Guinea"
+      />
+    </div>
+  </section>
+
+  <!-- mobile-app-dev-section -->
+  <section
+    class="grid w-full items-center justify-center gap-20 mb-24 mt-12 animate-hero-stagger max-w-[736px]"
+    data-reveal
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 text-center">
+      <div class="flex flex-col items-center gap-2.5 px-6">
+        <h1 class="flex text-2xl font-bold sm:text-4xl md:text-5xl">How I work  <GithubIcon /></h1>
+        <p
+          class="max-w-2xl text-justify text-base leading-relaxed text-foreground-muted sm:text-lg"
+        >
+          My workflow involves creating use a agile production management in taiga
+          and all design in figma while deciding features with client and
+          developing all after .
+        </p>
+      </div>
+        <div class="relative flex w-full items-center justify-center px-6 before:pointer-events-none before:absolute before:inset-0 before:z-10 before:shadow-[inset_0_40px_40px_-20px_rgba(255,255,255,1),inset_0_-40px_40px_-20px_rgba(255,255,255,1)] dark:before:shadow-[inset_0_40px_40px_-20px_rgba(0,0,0,0.8),inset_0_-40px_40px_-20px_rgba(0,0,0,0.8)]">
+          <img
+            src="/mobile-app-wireframes.png"
+            alt="Mobile App Wireframe"
+            class="w-full h-auto"
+          />
+        </div>
+    </div>
+
+    <!-- mobile apps Container -->
+    <div class="flex relative w-full justify-center pt-12 aspect-[390/789] text-white">
+      <svg
+        class="absolute inline-flex left-0 w-full h-full inset-0 -z-10"
+        width="390"
+        height="789"
+        viewBox="0 0 390 789"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 300C0 134.315 134.315 0 300 0H390V589C390 699.457 300.457 789 190 789H50C22.3858 789 0 766.614 0 739V300Z"
+          fill="#00B37E"></path>
+      </svg>
+      <div class="flex flex-col items-center justify-center text-center gap-6">
+        <article class="flex w-full justify-center gap-2 max-w-[650px] animate-hero-stagger" data-reveal>
+          <IphoneMockup />
+          <div
+            class="flex flex-col flex-1 items-center gap-2 text-center min-w-[188px] md:gap-10"
+          >
+            <h2 class="text-xs font-bold sm:text-3xl md:text-4xl">
+              MyKIDS: Offline Gamified Learning App
+            </h2>
+            <p
+              class="max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg"
+            >
+              MyKids is an offline-first mobile app designed to expand children's vocabulary through 
+              gamified learning. Modeled directly on Duolingo’s interface design, animations, audio/voice 
+              feedback, and exercise mechanics, the application includes a custom admin dashboard for dynamic 
+              lesson creation and relies on local data storage for seamless, internet-free operation.
+            </p>
+            <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
+          </div>
+        </article>
+        <article class="grid w-full items-center justify-center max-w-[650px] animate-hero-stagger" data-reveal>
+          <div class="flex items-center justify-center gap-2">
+            <div class="flex flex-col gap-2 md:gap-10 text-center text-wrap text-xs leading-relaxed text-foreground-muted sm:text-lg min-w-[188px] md:min-w-[304px] max-w-64">
+              <h2 class="text-xs font-bold sm:text-3xl md:text-4xl">
+                ECOTRIP: on-demand ride-hailing platform
+               </h2>
+              <p>
+                ECOTRIP is an on-demand mobility platform engineered for
+                Equatorial Guinea.
+              </p>
+              <ul class="grid gap-0 my-0 text-left px-2">
+                <li class="flex gap-2.5 box-border">
+                  <svg width="17" height="39" viewBox="0 0 17 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="3"/>
+                    <path d="M8.88147 12.376C21.9262 28.4669 10.2692 36.2685 8.88147 36.9999" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  </svg>
+                  <p class="flex-1 text-left">A real-time bidding mechanics</p>
+                </li>
+                <li class="flex gap-2.5 box-border">
+                 <svg width="13" height="39" viewBox="0 0 13 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="3"/>
+                   <path d="M7 13.5C-7.88145 23.624 10.2692 36.2685 8.88149 36.9999" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+                 </svg>
+                 <p class="flex-1 text-left">passenger-driver matching flows</p>
+                </li>
+                <li class="flex gap-2.5 box-border">
+                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="3"/>
+                 </svg>
+                 <p class="flex-1 text-left">provides a flexible bid-based ride-hailing experience optimized for regional infrastructure</p>
+                </li>
+              </ul>
+              <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
+            </div>
+            <EcotripThumb/>
+          </div>
+      </article>
       </div>
     </div>
   </section>

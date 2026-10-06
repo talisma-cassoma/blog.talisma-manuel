@@ -152,6 +152,15 @@ html * {
   font-style: normal;
 }
 
+@utility text-2xs {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@utility text-3xs {
+  font-size: 8px;
+  line-height: 1.5;
+}
 
 /* -------------------------------------------------------------------------
    Hero entrance & scroll-reveal animations

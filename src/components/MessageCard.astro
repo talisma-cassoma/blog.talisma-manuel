@@ -1,0 +1,49 @@
+---
+interface Props {
+  image: string;
+  name: string;
+  profession: string;
+  message: string;
+  class?: string;
+}
+
+const { image, name, profession, message, class: className = "" } = Astro.props;
+---
+
+<div class={`flex flex-col items-center max-w-sm m-4 ${className}`}>
+  <!-- Testimonial Card Bubble -->
+  <div
+    class="flex gap-4 p-2 md:p-5 lg:p-5 rounded-2xl bg-white text-slate-800 shadow-xl items-center max-w-[18rem] lg:max-w-[24rem]"
+    style="box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.15);"
+  >
+    <div class="flex-shrink-0 ">
+      <img
+        src={image}
+        alt={name}
+        class="w-12 h-12 rounded-[16px] object-cover"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <h2 class="text-2xs md:text-sm lg:text-sm font-bold text-gray-900">{name}</h2>
+      <p class="text-3xs md:text-xs lg:text-sm font-semibold text-gray-500 mb-1">{profession}</p>
+      <p class="text-3xs lg:text-sm leading-relaxed text-gray-600">
+        {message}
+      </p>
+    </div>
+  </div>
+
+  <!-- Arrow Pointer -->
+  <svg
+    width="23"
+    height="21"
+    viewBox="0 0 23 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="-mt-0.5"
+  >
+    <path
+      d="M11.2583 21L-6.10352e-05 0L22.5166 0L11.2583 21Z"
+      fill="white"
+    ></path>
+  </svg>
+</div>
