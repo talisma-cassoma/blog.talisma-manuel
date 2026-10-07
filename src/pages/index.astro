@@ -10,6 +10,7 @@ import GithubIcon from "@/components/GithubIcon.astro";
 import MessageCard from "@/components/MessageCard.astro";
 import IphoneMockup from "@/components/IphoneMockup.astro";
 import EcotripThumb from "@/components/EcotripThumb.astro";
+import RideRequestCard from "@/components/RideRequestCard.astro";
 
 const posts = (
   await getCollection("blog", ({ data }) => {
@@ -473,19 +474,7 @@ const BASE_URL = Astro.url.origin;
     </div>
 
     <!-- mobile apps Container -->
-    <div class="flex relative w-full justify-center pt-12 aspect-[390/789] text-white">
-      <svg
-        class="absolute inline-flex left-0 w-full h-full inset-0 -z-10"
-        width="390"
-        height="789"
-        viewBox="0 0 390 789"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 300C0 134.315 134.315 0 300 0H390V589C390 699.457 300.457 789 190 789H50C22.3858 789 0 766.614 0 739V300Z"
-          fill="#00B37E"></path>
-      </svg>
+  <div class="relative flex h-fit w-full flex-none order-0 flex-grow-0 z-0 justify-center pt-12 text-white bg-[#00B37E] rounded-tl-[417px] rounded-tr-none rounded-br-[417px] rounded-bl-[176px]">
       <div class="flex flex-col items-center justify-center text-center gap-6">
         <article class="flex w-full justify-center gap-2 max-w-[650px] animate-hero-stagger" data-reveal>
           <IphoneMockup />
@@ -496,21 +485,20 @@ const BASE_URL = Astro.url.origin;
               MyKIDS: Offline Gamified Learning App
             </h2>
             <!-- Shown ONLY on large screens (lg and above) -->
-            <p class="hidden lg:block max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
-  MyKids is an offline-first mobile app designed to expand children's vocabulary through 
-  gamified learning. Modeled directly on Duolingo’s interface design, animations, audio/voice 
-  feedback, and exercise mechanics, the application includes a custom admin dashboard for dynamic 
-  lesson creation and relies on local data storage for seamless, internet-free operation.
+            <p class="hidden lg:block md:block max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
+              MyKids is an offline-first mobile app designed to expand children's vocabulary through 
+              gamified learning. Modeled directly on Duolingo’s interface design, animations, audio/voice 
+              feedback, and exercise mechanics, the application includes a custom admin dashboard for dynamic 
+              lesson creation and relies on local data storage for seamless, internet-free operation.
             </p>
             <!-- Shown ONLY on screens smaller than large (< lg) -->
-            <p class="lg:hidden max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
+            <p class="lg:hidden md:hidden max-w-2xl text-left text-xs leading-relaxed text-foreground-muted sm:text-lg">
                 An offline, Duolingo-inspired app for children that expands vocabulary through gamified learning and custom lessons.
             </p>
             <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
           </div>
         </article>
-        <article class="grid w-full items-center justify-center max-w-[650px] animate-hero-stagger" data-reveal>
-          <div class="flex items-center justify-center gap-2">
+        <article class="flex flex-col lg:flex-row w-full items-center justify-center max-w-[650px] animate-hero-stagger" data-reveal>
             <div class="flex flex-col gap-2 md:gap-10 text-center text-wrap text-xs leading-relaxed text-foreground-muted sm:text-lg min-w-[144px] md:min-w-[304px] max-w-64">
               <h2 class="text-xs font-bold sm:text-3xl md:text-4xl">
                 ECOTRIP: on-demand ride-hailing platform
@@ -543,8 +531,7 @@ const BASE_URL = Astro.url.origin;
               </ul>
               <a href="/how-i-work" class="text-[#0866FF]">learn more</a>
             </div>
-            <EcotripThumb/>
-          </div>
+            <EcotripThumb/> 
       </article>
       </div>
     </div>

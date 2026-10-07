@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  origin?: string;
+  destination?: string;
+  distance?: string;
+  estimatedTime?: string;
+  initialPrice?: number;
+  currency?: string;
+}
+
+const {
+  origin = "Bata, Guinea Ecuatorial",
+  destination = "INES CARLOS LWANGA, Bata, Guinea Ecuatorial",
+  distance = "2.5 km",
+  estimatedTime = "6 min 18 s",
+  initialPrice = 575,
+  currency = "Francos"
+} = Astro.props;
+---
+
+<!-- Container com min-width de 160px, width flexível e max-width para telas maiores -->
+<div class="w-[280px] max-w-md bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-6 shadow-xl border border-gray-100 font-sans text-gray-800 transition-all">
+  
+  <!-- Puxador Superior / Indicator Bar -->
+  <div class="flex justify-center -mt-1 sm:-mt-2 mb-2 sm:mb-4">
+    <div class="w-8 sm:w-12 h-0.5 sm:h-1 bg-gray-300 rounded-full"></div>
+  </div>
+
+  <!-- Endereços de Origem e Destino -->
+  <div class="relative flex items-center justify-between mb-3 sm:mb-4 gap-2">
+    <div class="flex items-center gap-2 sm:gap-3 w-full pr-1 sm:pr-4 min-w-0">
+      
+      <!-- Indicadores Visuais da Rota -->
+      <div class="flex flex-col items-center justify-between h-10 sm:h-14 py-0.5 shrink-0">
+        <Icon name="tabler:radioactive" class="text-gray-500 w-3 h-3 sm:w-4 sm:h-4" />
+        <div class="w-0.5 h-4 sm:h-6 border-l-2 border-dotted border-gray-400"></div>
+        <Icon name="tabler:map-pin" class="text-gray-500 w-3 h-3 sm:w-4 sm:h-4" />
+      </div>
+
+      <!-- Textos dos Endereços (Tamanho responsivo ajustável por Viewport) -->
+      <div class="flex flex-col justify-between h-12 sm:h-16 w-full py-0.5 min-w-0">
+        <div class="truncate text-gray-800 font-medium text-[clamp(10px,2.5vw,14px)]">{origin}</div>
+        <div class="border-b border-gray-100 my-0.5 sm:my-1"></div>
+        <div class="truncate text-gray-800 font-medium underline underline-offset-2 decoration-gray-400 text-[clamp(10px,2.5vw,14px)]">
+          {destination}
+        </div>
+      </div>
+    </div>
+
+    <!-- Ícones Laterais de Ação -->
+    <div class="flex flex-col justify-between h-12 sm:h-16 py-0.5 text-gray-500 shrink-0">
+      <button aria-label="Localização atual" class="hover:text-gray-800 transition-colors p-0.5">
+        <Icon name="tabler:target" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </button>
+      <button aria-label="Inverter rota" class="hover:text-gray-800 transition-colors p-0.5">
+        <Icon name="tabler:arrows-up-down" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Detalhes do Percurso (Resumo da Rota) -->
+  <div class="text-center my-3 sm:my-6">
+    <div class="flex items-center justify-center gap-1 sm:gap-2 font-semibold text-[clamp(11px,2.8vw,14px)] text-gray-900 mb-0.5 sm:mb-1 flex-wrap">
+      <span class="truncate max-w-[40%]">Bata</span>
+      <Icon name="tabler:arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 shrink-0" />
+      <span class="truncate max-w-[50%]">INES CARLOS LWANGA</span>
+    </div>
+
+    <div class="text-[clamp(9px,2.2vw,12px)] text-gray-500">
+      <span class="font-medium text-gray-700">{distance}</span>
+      <p class="mt-0.5 leading-tight">el tiempo previsto de viaje es {estimatedTime}</p>
+    </div>
+  </div>
+
+  <!-- Controle de Preço / Oferta -->
+  <div class="bg-black text-white rounded-lg sm:rounded-xl flex items-center justify-between px-2.5 sm:px-4 py-2 sm:py-3.5 mb-2 sm:mb-3 shadow-sm">
+    <button aria-label="Diminuir valor" class="text-white hover:text-gray-300 font-bold p-1">
+      <Icon name="tabler:minus" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+    </button>
+    <div class="font-semibold text-[clamp(11px,3vw,16px)] tracking-wide truncate px-1">
+      {initialPrice} {currency}
+    </div>
+    <button aria-label="Aumentar valor" class="text-white hover:text-gray-300 font-bold p-1">
+      <Icon name="tabler:plus" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+    </button>
+  </div>
+
+  <!-- Botão Principal de Ação -->
+  <button
+    class="w-full bg-[#1e7e48] hover:bg-[#18663a] text-white font-medium py-2 sm:py-3.5 rounded-lg sm:rounded-xl transition-colors duration-200 shadow-md text-[clamp(11px,2.8vw,14px)] lowercase"
+  >
+    buscar un conductor
+  </button>
+</div>
