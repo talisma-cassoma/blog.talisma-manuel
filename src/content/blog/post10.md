@@ -11,6 +11,8 @@ My son was having some difficulties learning the Arabic language. After analyzin
 
 That inspired me to build a dedicated mobile application where I could create new lessons, customize learning games through an admin account, and leverage local data storage so the app works completely offline. I successfully developed the app and installed the <b>.apk</b> onto our tablet for him to use. Just click <a target="_blank" href="https://drive.google.com/file/d/1RLquKIayRkqOMZZz9fpWtUgVXrweF2jM/view?usp=sharing">here</a> to download. If you're a developer, check out the <a target="_blank" href="https://github.com/talisma-cassoma/mykids">GitHub repo of the project</a>—don't forget to star the project, please, it would help a lot! 😉
 
+We liked the idea so much that I started building the app for both of my children: my little princess and my big boy, Dino. 
+
 ---
 
 ## Character Design & Art Style
@@ -93,8 +95,11 @@ To keep learning structured yet engaging, I organize lessons around **4 core pil
 3. **Test:** Evaluation checkpoints where performance results are recorded for progress statistics.
 4. **Play:** Mini runner-style games designed to keep the child motivated.
 
+<div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap;">
 <img src="/post10/4pillars.png" alt="The 4 learning pillars schema" style="width: 100%; height: auto; border-radius: 8px; margin: 1rem 0;">
-<img src="/post10/module.png" alt="Module structure overview" style="width: 100%; height: auto; border-radius: 8px; margin: 1rem 0;">
+
+<img src="/post10/module.png" alt="Module structure overview" style="width: 60%; height: auto; border-radius: 8px; margin: 1rem 0;">
+</div>
 
 
 The frist version of the app:
