@@ -44,7 +44,7 @@ To mimic the charm of a real hand-drawn illustration on physical paper, the char
 
 ## Meet the Characters
 
-<img src="/post10/characters.png" alt="Princess character references" style="width: 4rem%; height: auto; border-radius: 8px;">
+<img src="/post10/characters.png" alt="Princess character references" style="width: 18rem; height: auto; border-radius: 8px;">
 
 <p>It took some time to find the right references to bring my vision to life. During the process, you often know what you want in your head, but struggle to represent it graphically. I feel like I've finally caught a glimpse of it even if I'm still tweaking a few details to get it exactly where I want it but I'm really proud of what I've created so far.</p> 
 
