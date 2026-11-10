@@ -23,14 +23,20 @@ The characters are constructed primarily from **geometric shapes** (rectangles, 
 
 To mimic the charm of a real hand-drawn illustration on physical paper, the characters use a warm colored pencil aesthetic layered with subtle grainy textures.
 
-<img src="/post10/ref1.png" width="50%" alt="Character design concept sketch" />
-
-<div style="display: flex; align-items: center; gap: 2rem; margin: 2rem 0;">
-  <div style="flex: 1;">
-    <p>For navigation, I wanted <b>Gamified UI map paths</b>—similar to the node-based progression tree famously used in the <a target="_blank" href="https://www.duolingo.com">Duolingo</a> app. To bring this to life, I integrated isometric UI assets inspired by designs like <b><a target="_blank" href="https://tylereldridgedesigns.com/betterfly">betterfly</a></b>.</p>
+<div class="content-split" style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0;">
+  <!-- Left Column / Image 1 -->
+  <div style="flex: 1 1 300px; display: flex; justify-content: center;">
+    <img src="/post10/ref1.png" style="width: 100%; max-width: 450px; height: auto;" alt="Character design concept sketch" />
   </div>
-  <div style="flex: 1;">
-    <img src="/post10/ref2.png" alt="Duolingo style path UI reference" style="width: 100%; height: auto; border-radius: 8px;" />
+
+  <!-- Right Column (Text + Image 2) - Forced Side-by-Side -->
+  <div style="flex: 1 1 300px; display: flex; flex-direction: column; flex-wrap: nowrap; gap: 1.5rem; align-items: center;">
+    <div style="flex: 1;">
+      <p style="margin: 0;">For navigation, I wanted <b>Gamified UI map paths</b>—similar to the node-based progression tree famously used in the <a target="_blank" href="https://www.duolingo.com">Duolingo</a> app. To bring this to life, I integrated isometric UI assets inspired by designs like <b><a target="_blank" href="https://tylereldridgedesigns.com/betterfly">betterfly</a></b>.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="/post10/ref2.png" alt="Duolingo style path UI reference" style="width: 16rem; height: auto; border-radius: 8px;" />
+    </div>
   </div>
 </div>
 
