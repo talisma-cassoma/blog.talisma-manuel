@@ -44,6 +44,10 @@ To mimic the charm of a real hand-drawn illustration on physical paper, the char
 
 ## Meet the Characters
 
+<img src="/post10/characters.png" alt="Princess character references" style="width: 4rem%; height: auto; border-radius: 8px;">
+
+<p>It took some time to find the right references to bring my vision to life. During the process, you often know what you want in your head, but struggle to represent it graphically. I feel like I've finally caught a glimpse of it even if I'm still tweaking a few details to get it exactly where I want it but I'm really proud of what I've created so far.</p> 
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin: 2rem 0;">
     <h3 style="margin: 0;">The Princess Girl</h3>
     <p style="margin: 0; color: #666;">References</p>
@@ -89,6 +93,7 @@ To mimic the charm of a real hand-drawn illustration on physical paper, the char
     <span style="font-size: 0.9rem;">Belly & Nails: #13574A</span>
   </div>
 </div>
+
 
 ---
 
